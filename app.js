@@ -7,6 +7,14 @@ var bodyParser = require('body-parser');
 
 //var sample = require('./routes/sample');
 
+//*********************************************************************************************
+const router = express.Router();
+
+//*********************************************************************************************
+//Connecting to MongoDB
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/petStore', {useMongoClient: true});
+
 var app = express();
 
 // view engine setup
@@ -23,6 +31,34 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //// Nuevas Rutas van aqui:
 //app.use('/sample', sample);
+
+
+//*********************************************************************************************
+/*app.use('/api', require('./routes/customers')(router));
+app.use('/api', require('./routes/pets')(router));*/
+
+const Customer = require('./models/customers')
+
+/*para prueba de concepto del esquema de mongodb*/
+
+const customer = new Customer({ 
+	"dni":"123456789",
+	"firstName":"Hugo",
+	"lastName":"Parapar",
+	"phoneNumber":"987654321",
+	"email": "email@email.com",
+	"note": "nota"
+});
+
+customer.save((err) => {
+
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(customer);
+        }
+ })
+
 
 //Front End
 app.all("*", (req, res) => {
@@ -46,5 +82,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 module.exports = app;
