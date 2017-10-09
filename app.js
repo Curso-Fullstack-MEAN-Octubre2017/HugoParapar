@@ -1,21 +1,21 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-
-//var sample = require('./routes/sample');
+var express = require('express'),
+	path = require('path'),
+	favicon = require('serve-favicon'),
+	logger = require('morgan'),
+	cookieParser = require('cookie-parser'),
+	bodyParser = require('body-parser');
 
 //*********************************************************************************************
-const router = express.Router();
+/*const router = express.Router();*/
 
-//*********************************************************************************************
 //Connecting to MongoDB
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/petStore', {useMongoClient: true});
 
 var app = express();
+
+//*********************************************************************************************
+require('./routes/customers.js')(express,app);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,14 +32,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 //// Nuevas Rutas van aqui:
 //app.use('/sample', sample);
 
+//app.use(router);
 
-//*********************************************************************************************
-/*app.use('/api', require('./routes/customers')(router));
-app.use('/api', require('./routes/pets')(router));*/
 
 const Customer = require('./models/customers')
 
-/*para prueba de concepto del esquema de mongodb*/
+/*para prueba de concepto del esquema de mongodb
 
 const customer = new Customer({ 
 	"dni":"123456789",
@@ -58,7 +56,7 @@ customer.save((err) => {
             console.log(customer);
         }
  })
-
+*/
 
 //Front End
 app.all("*", (req, res) => {

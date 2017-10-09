@@ -13,6 +13,9 @@ angular.module('petStore')
             .when("/sample",{
                 template: "<sample-module></sample-module>"
             })
+            .when("/customer",{
+                template: "<customer-module></customer-module>"
+            })
             .otherwise({
                 template: "Other"
             });
