@@ -1,18 +1,16 @@
 
 var express = require('express');
-
-var Customer = require('../controller/customer.js');
-
+var CustomerController = require('../controller/customer.js');
 var api = express.Router();
 
-	//API
-		api.route('/customers') 
-		 .get(Customer.findAll)
-		 .post(Customer.add);
-		
-		/*api.route('/customers/:id') 
-		 .get(Customer.findById)
-		 .put(Customer.update);*/
-	
+
+api.get('/customers',CustomerController.getCustomers);
+api.post('/customers',CustomerController.postCustomer);
+
+
+api.get('/customers/:id',CustomerController.getCustomerById);
+
+
+//api.put('/customers/:id',CustomerController.updateCustomer);
 
 module.exports = api;
