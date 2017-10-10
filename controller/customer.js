@@ -22,30 +22,14 @@ function postCustomer(req,res){
 	
 }
 
-function getCustomers(req,res){
+function getCustomers2datos(req,res){
 	
-	
-	/*
-	var search = {};
-	if(req.query.searchTerm) {
-		var regexp = new RegExp(req.query.searchTerm, "i")
-		search.$or = [{firstName: regexp}, {lastName: regexp}];
-	}
-	console.log("Search customers:", search);
-	Customer.find(search, (err, customers) => {
-		if (err) {
-			console.log(err);
-			res.sendStatus(500);
-		} else {
-			res.json(customers);
-		}
-	}).sort({'_id' : -1});
-	*/
-	
-	
-	Customer.find({}, (err,customers) =>{
+	Customer.find({}, (err,customers) =>{ /*firstName:1,lastName:1*/
 		
 		if(err) return res.status(500).send({message: "Error"});
+		
+		console.log(customers);
+		
 		res.send(200, customers);			
 	});
 	
@@ -62,4 +46,4 @@ function getCustomerById(req,res){
 }
 
 
-module.exports = {postCustomer, getCustomers, getCustomerById};
+module.exports = {postCustomer, getCustomers2datos, getCustomerById};

@@ -3,13 +3,26 @@
 //var mongoose = require('mongoose');
 /*var Customer = require('../../../models/customers.js');*/
 
-angular.module('customerModule', [])
-    .component('customerModule', {
+var app= angular.module('customerModule', []);
+
+
+app.component('customerModule', {
         templateUrl:'/app/customer-module/customer-module.html',
-        controller: function($scope, $http) {
+        controller: function($scope, $http, $filter) {
         	
+        	//
+    			console.log("Incializando customer-module")
+        	//
+    			
+        	$scope.currentPage = 0;
+        	$scope.pageSize = 5;
+        	$scope.q = '';
         	
         	$scope.customerList = [];
+        	
+        	$scope.getData = function () {
+        	      return $filter('filter')($scope.customerList, $scope.q)
+        	}
         	
         	$http.get('api/customers').then(function(res) {
         		
@@ -19,40 +32,20 @@ angular.module('customerModule', [])
         		$scope.customerList = res.data;
         	});
   	
-            console.log("Incializando customer-module")
+        	
+
+            $scope.numberOfPages=function(){
+                return Math.ceil($scope.getData().length/$scope.pageSize);                
+            }
+            
+             
         }
     });
 
-    
 
-
-/*
-function customerController($scope, $http) { 
-	 $scope.formData = {};
-	 getClients();
-
-	//Crear cliente
-	 $scope.createCustomer = function(){
-	 $http.post('/api/customers', $scope.formData)
-	 .success(function(data) {
-	 $scope.formData = {};
-	 getClients();
-	 })
-	 .error(function(data) {
-	 console.log('Error:' + data);
-	 });
-	 };
-
-		*/ /*
-	function getClients(){
-	 $http.get('/api/customers')
-	 .success(function(data) {
-	 $scope.customers = data;
-	 console.log(data)
-	 })
-	 .error(function(data) {
-	 console.log('Error: ' + data);
-	 }); 
-	 };
-	}
-*/
+app.filter('startFrom', function() {
+    return function(input, start) {
+        start = +start; //parse to int
+        return input.slice(start);
+    }
+});
