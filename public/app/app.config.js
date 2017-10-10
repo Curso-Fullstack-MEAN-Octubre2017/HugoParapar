@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 angular.module('petStore')
     .config(function(
@@ -13,7 +13,7 @@ angular.module('petStore')
             .when("/sample",{
                 template: "<sample-module></sample-module>"
             })
-            .when("/customer",{
+            .when("/customers",{
                 template: "<customer-module></customer-module>"
             })
             .otherwise({
