@@ -11,7 +11,7 @@ function postCustomer(req,res){
 	customer.lastName =  params.lastName;
 	customer.phoneNumber = params.phoneNumber;
 	customer.email = params.email;
-	customer.note =params.note;
+	customer.note = params.note;
 	
 	customer.save((err,customerStored) =>{
 		
@@ -40,5 +40,27 @@ function getCustomerById(req,res){
 	
 }
 
+function updateCustomer(req,res){
+	
+	
+	Customer.findById(req.params.id, (err,customers) =>{
+		
+		customers.dni = req.body.dni || customers.dni;
+		customers.firstName  = req.body.firstName || customers.firstName;
+		customers.lastName  = req.body.lastName || customers.lastName;
+		customers.phoneNumber  = req.body.phoneNumber || customers.phoneNumber;
+		customers.email  = req.body.email || customers.email;
+    	customers.note  = req.body.note || customers.note;
+    	
+		customers.save((err, customers) => {
+            if (err) {
+                res.status(500).send({message: "Error"})
+            }
+            res.status(200).send(customers);
+        });
+			
+	});
+	
+}
 
-module.exports = {postCustomer, getCustomers, getCustomerById};
+module.exports = {postCustomer, getCustomers, getCustomerById, updateCustomer};

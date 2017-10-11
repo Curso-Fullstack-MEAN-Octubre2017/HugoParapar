@@ -29,5 +29,38 @@ var app= angular.module('customerDetailModule', []);
             		/********************************************************************************************************************/
             										
             	});    
+            	
+            	
+            //put
+       /*     	
+            	$scope.modificarDatos = function () {
+                   
+            		console.log("modificar");
+            		
+            		var data = $.param({
+                        firstName: $scope.firstName,
+                        lastName: $scope.lastName
+                    });
+            	
+            		console.log(data);
+            		 
+            		//$http.put('api/customers/'+id).then(function(res) { });  
+            	        
+            		  $http.put('/api/customers'+ data)
+                      .success(function (data, status, headers) {
+                          $scope.ServerResponse = data;
+                      })
+            		 
+            		 
+            	        
+            	 };
+            	
+            	*/
+            	
+            	
+            	
+            	
+            	
+            	
         }
     });

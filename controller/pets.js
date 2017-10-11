@@ -11,9 +11,9 @@ function postPets(req,res){
 	pets.birthDate =  params.birthDate;
 	pets.species = params.species;
 	pets.race = params.race;
-	pets.description =params.description;
+	pets.description = params.description;
 	pets.photoURl = params.photoURl;
-	pets.customerId =params.customerId;
+	pets.customerId = params.customerId;
 	
 	pets.save((err,petsStored) =>{
 		

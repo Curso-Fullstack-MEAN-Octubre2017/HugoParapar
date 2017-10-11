@@ -1,7 +1,7 @@
 <div>
 	<p>Detalle del cliente: {{customerDetail._id}}</p>
 
-	<form action="/action_page.php">
+	<form ng-submit="modificarDatos()">
 
 	  Nombre:<br>
 	  <input type="text" name="firstname" value="{{customerDetail.firstName}}"><br>
@@ -16,7 +16,10 @@
 	  Notas:<br>
 	  <input type="text" name="note" value="{{customerDetail.note}}"><br>
 	  <br>
-	  <input type="submit" value="Guardar cambios">
+	  <input type="submit" value="Guardar cambios" >
+	</form>
+	
+	
 	  <br>
 	  <hr>
 	  
@@ -27,5 +30,4 @@
            <a ng-href="pets/{{p._id}}">  <p>{{p.name}}</p></a>
         </li>
     </ul>
-	</form>
 </div>
