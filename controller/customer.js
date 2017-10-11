@@ -19,26 +19,21 @@ function postCustomer(req,res){
 		if(!customerStored) return res.status(404).send({message: "No se registro el cliente"});
 		res.status(200).send({customer: customerStored});	
 	});
-	
 }
 
-function getCustomers2datos(req,res){
+function getCustomers(req,res){
 	
-	Customer.find({}, (err,customers) =>{ /*firstName:1,lastName:1*/
-		
-		if(err) return res.status(500).send({message: "Error"});
-		
-		console.log(customers);
-		
-		res.send(200, customers);			
-	});
-	
+	Customer.find({})
+			.select('lastName firstName')
+			.exec(function (err,customers) {
+				if(err) return res.status(500).send({message: "Error"});
+				res.send(200, customers);			
+	});	
 }
        
 function getCustomerById(req,res){
 	
 	Customer.findById(req.params.id, (err,customers) =>{
-		
 		if(err) return res.status(500).send({message: "Error"});
 		res.send(200, customers);			
 	});
@@ -46,4 +41,4 @@ function getCustomerById(req,res){
 }
 
 
-module.exports = {postCustomer, getCustomers2datos, getCustomerById};
+module.exports = {postCustomer, getCustomers, getCustomerById};

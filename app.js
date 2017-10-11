@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 var app = express();
 
 //*********************************************************************************************
-var customer_routes = require('./routes/customers.js');
+var customerRoutes = require('./routes/api.js');
 
 
 //Connecting to MongoDB
@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //// Nuevas Rutas van aqui:
 //app.use('/sample', sample);
 
-app.use('/api/',customer_routes);
+app.use('/api/',customerRoutes);
 
 
 //Front End

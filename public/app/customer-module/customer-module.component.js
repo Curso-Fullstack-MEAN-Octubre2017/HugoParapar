@@ -1,10 +1,6 @@
 'use strict'
 
-//var mongoose = require('mongoose');
-/*var Customer = require('../../../models/customers.js');*/
-
 var app= angular.module('customerModule', []);
-
 
 app.component('customerModule', {
         templateUrl:'/app/customer-module/customer-module.html',

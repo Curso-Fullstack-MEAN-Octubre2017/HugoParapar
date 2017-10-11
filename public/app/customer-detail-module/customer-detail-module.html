@@ -1,1 +1,31 @@
-<div>This is the Customer Detail Module Template</div>
+<div>
+	<p>Detalle del cliente: {{customerDetail._id}}</p>
+
+	<form action="/action_page.php">
+
+	  Nombre:<br>
+	  <input type="text" name="firstname" value="{{customerDetail.firstName}}"><br>
+	  Apellidos:<br>
+	  <input type="text" name="lastname" value="{{customerDetail.lastname}}"><br>
+	  DNI:<br>
+	  <input type="text" name="dni" value="{{customerDetail.dni}}"><br>
+	  E-mail:<br>
+	  <input type="text" name="email" value="{{customerDetail.email}}"><br>
+	  Teléfono:<br>
+	  <input type="text" name="phoneNumber" value="{{customerDetail.phoneNumber}}"><br>
+	  Notas:<br>
+	  <input type="text" name="note" value="{{customerDetail.note}}"><br>
+	  <br>
+	  <input type="submit" value="Guardar cambios">
+	  <br>
+	  <hr>
+	  
+	  <p>Mascotas: </p>
+	  <br>
+	  <ul>
+        <li ng-repeat="p in petsList | orderBy: 'name'" > 
+           <a ng-href="pets/{{p._id}}">  <p>{{p.name}}</p></a>
+        </li>
+    </ul>
+	</form>
+</div>
