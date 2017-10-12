@@ -1,22 +1,24 @@
 <div>
-	<p>Detalle del cliente: {{customerDetail._id}}</p>
-
-	<form ng-submit="modificarDatos()">
-
+	<form name="miForm">
 	  Nombre:<br>
-	  <input type="text" name="firstname" value="{{customerDetail.firstName}}"><br>
+	  <input type="text" ng-model="firstName" name="firstName"><br>
 	  Apellidos:<br>
-	  <input type="text" name="lastname" value="{{customerDetail.lastname}}"><br>
+	  <input type="text" ng-model="lastName" name="lastName"><br>
 	  DNI:<br>
-	  <input type="text" name="dni" value="{{customerDetail.dni}}"><br>
+	  <input type="text" ng-model="dni" name="dni"><br>
 	  E-mail:<br>
-	  <input type="text" name="email" value="{{customerDetail.email}}"><br>
+	  <input type="text" ng-model="email" name="email"><br>
 	  Teléfono:<br>
-	  <input type="text" name="phoneNumber" value="{{customerDetail.phoneNumber}}"><br>
+	  <input type="text" ng-model="phoneNumber" name="phoneNumber"><br>
 	  Notas:<br>
-	  <input type="text" name="note" value="{{customerDetail.note}}"><br>
+	  <input type="text" ng-model="note" name="note"><br>
 	  <br>
-	  <input type="submit" value="Guardar cambios" >
+	  
+	  
+	   <button data-ng-click="submit(miForm)" class="btn btn-default">Submit</button>
+	  
+	  
+	 
 	</form>
 	
 	

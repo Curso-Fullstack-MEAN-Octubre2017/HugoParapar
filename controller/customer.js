@@ -24,7 +24,7 @@ function postCustomer(req,res){
 function getCustomers(req,res){
 	
 	Customer.find({})
-			.select('lastName firstName')
+			.select('lastName firstName dni')
 			.exec(function (err,customers) {
 				if(err) return res.status(500).send({message: "Error"});
 				res.send(200, customers);			

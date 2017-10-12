@@ -1,8 +1,20 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px Roboto, Noto, "Lucida Grande", sans-serif;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
-a {
-  color: #00B7FF;
-}
+main {flex: 1 0 auto;}
+
+.page-footer {padding-top: 0px;}
+.page-footer .footer-copyright {padding-right: 50px;}
+.pagination{text-align: center;}
+.numberPagination{padding-right: 20px; padding-left: 20px;}
+
+/** COLORES **/
+nav, .btn, .page-footer{ background-color: #00695c;}
+li.collection-item:nth-child(even) {background-color: #b2dfdb;}
+li.collection-item:nth-child(odd) {background-color: #e0f2f1;}
+.collection-header, .numberPagination{color:#00695c;}
+a {color: black;}

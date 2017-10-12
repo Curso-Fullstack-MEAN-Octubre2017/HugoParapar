@@ -1,29 +1,32 @@
-<div>
-
-
-	<input ng-model="q" id="search" class="form-control" placeholder="Filter text">
-	
-	
-
-    <ul>
-        <li ng-repeat="c in customerList | filter:q | startFrom:currentPage*pageSize | limitTo:pageSize | orderBy: 'firstName'" > 
-           <a ng-href="customers/{{c._id}}">  <p>Nombre: {{c.firstName}} {{c.lastName}}</p></a>
-        </li>
-    </ul>
-    <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
-        Previous
-    </button>
-    {{currentPage+1}}/{{numberOfPages()}}
-    <button ng-disabled="currentPage >= getData().length/pageSize - 1" ng-click="currentPage=currentPage+1">
-        Next
-    </button>
-    <br>
-    <hr>
-     <button>
-        <a ng-href="customers/new">  <p>Añadir nuevo cliente</p></a>
-    </button>
+<section class="interior">
+<nav class="nav-wrapper">
+  <form>
+      <div class="input-field">
+         <input ng-model="q" id="search" type="search" placeholder="Filtra por: Nombre, apellido o DNI">
+         <label class="label-icon" for="search"><i class="material-icons">search</i></label><i class="material-icons">close</i>
+      </div>
+  </form>
+</nav>
+  <ul class="collection">
+  	<li class="collection-header center"><h4>Listado de clientes</h4></li>
+	<li class="collection-item avatar" ng-repeat="c in customerList | filter:q | startFrom:currentPage*pageSize | limitTo:pageSize | orderBy: 'firstName'">
+		<a ng-href="customers/{{c._id}}">
+			<i class="material-icons circle">person</i><p>{{c.firstName}} {{c.lastName}} | {{c.dni}}</p><spam class="secondary-content"><i class="material-icons">fullscreen</i></spam>
+		</a>
+	</li>
+  </ul>
+  
+ <div class="pagination">
+  	<a class="btn"><i class="material-icons left" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">fast_rewind</i></a>
+  	 <spam class="numberPagination">{{currentPage+1}}/{{numberOfPages()}}</spam>
+	<a class="btn"><i class="material-icons right" ng-disabled="currentPage >= getData().length/pageSize - 1" ng-click="currentPage=currentPage+1">fast_forward</i></a>
 </div>
-	
-	
-	
-	
+  
+  
+ 
+  
+ 
+  
+    <a class="btn-floating btn-large waves-effect waves-light teal darken-4 right" ng-href="customers/new"><i class="material-icons">add</i></a>
+    
+</section>
