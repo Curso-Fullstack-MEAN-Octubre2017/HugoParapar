@@ -23,64 +23,56 @@ var app= angular.module('customerDetailModule', []);
             //Mascotas del cliente
             	var petsList = this
             	$http.get('api/customers/'+id+'/pets/').then(function(res) {
-            		$scope.petsList = res.data;
-            										
+            		$scope.petsList = res.data;						
             	});    
             }   	
             	
-            	// PUT/POST   	
-            	$scope.submit = function(form) {
-            	
-            		var data = {
-	                        firstName: $scope.firstName,
-	                        lastName: $scope.lastName,
-	                        dni: $scope.dni,
-	                        email: $scope.email,
-	                        phoneNumber: $scope.phoneNumber,
-	                        note: $scope.note,
-            		};
+        	// PUT/POST   	
+        	$scope.submit = function(form) {
+        	
+        		var data = {
+                        firstName: $scope.firstName,
+                        lastName: $scope.lastName,
+                        dni: $scope.dni,
+                        email: $scope.email,
+                        phoneNumber: $scope.phoneNumber,
+                        note: $scope.note,
+        		};
+        		
+        		if(id!="new"){ //put
+        			
+        			$http.put("api/customers/"+id, data);
+	        			/*   .then(
+	     		       function(response){
+	     		         // success callback
+	     		       }, 
+	     		       function(response){
+	     		         // failure callback
+	     		       }
+	     		    );*/
+        			
+            	}else{ //post
             		
-            		if(id!="new"){ //put
-            			
-	            		$http({
-	                        method: 'PUT',
-	                        url: "api/customers/" + id,
-	                        data: JSON.stringify(data),
-	                        headers: {
-	                            'Content-Type': 'application/json'
-	                        }
-	                    }).
-	                    success(function (status) {
-	                    	console.log('OK '+status);
-	                    }).
-	                    error(function (status) {
-	                    	console.log('Error: ' + status);;    
-	                    });
-	            	}else{ //post
-	            		
-	            		$http.post("api/customers/", data);
-	            		/*   .then(
-	            		       function(response){
-	            		    	   
-	            		         // success callback
-	            		       }, 
-	            		       function(response){
-	            		         // failure callback
-	            		       }
-	            		    );*/
-	            		
-	            	}
-            		
-                  };	 
+            		$http.post("api/customers/", data);
+            		/*   .then(
+            		       function(response){
+            		         // success callback
+            		       }, 
+            		       function(response){
+            		         // failure callback
+            		       }
+            		    );*/	
+            	}	
+              };	 
 
-                  
-                  $( "#boton").click(function() {
-      
-                	  $location.url('/pets/new?idCustomer=' + id);
-                	  $scope.$apply();
-                	
-                	});
-             
+              
+//Crear nueva mascota a través del id del dueño
+              
+              $( "#boton").click(function() {
+            	  $location.url('/pets/new?idCustomer=' + id);
+            	  $scope.$apply();
+            	});
+//¿¿¿¿¿¿¿¿¿¿¿¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡!!!!!!!!!!!!!!?????????????? 
             	 		
         }
     });

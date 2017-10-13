@@ -22,63 +22,46 @@ var app= angular.module('petDetailModule', []);
             		 $scope.photoURl =  res.data.photoURl;
             		 $scope.customerId =  res.data.customerId;
             	});
-            
-           
             }   	
             	
-            	// PUT/POST   	
-            	$scope.submit = function(form) {
-            	
+        	// PUT/POST   	
+        	$scope.submit = function(form) {
+        	
+        		var data = {
+        				chipNumber: $scope.chipNumber,
+        				name: $scope.name,
+        				birthDate: $scope.birthDate,
+        				species: $scope.species,
+        				race: $scope.race,
+        				description: $scope.description,
+        				photoURl: $scope.photoURl,
+        				customerId : idcustomerId,
+                    };
+        		
+        		if(id!="new"){ //put
+        			
+        			$http.put("api/customers/"+id, data)
+        				.then(
+    						 function(response){ // success callback
+    							 console.log('OK '+status);
+    						 }, 
+    						 function(response){  // failure callback
+    							 console.log('Error: ' + status);;  
+    						 }
+        				  );
+        			
+            	}else{ //post
             		
-            		
-            		var data = {
-            				chipNumber: $scope.chipNumber,
-            				name: $scope.name,
-            				birthDate: $scope.birthDate,
-            				species: $scope.species,
-            				race: $scope.race,
-            				description: $scope.description,
-            				photoURl: $scope.photoURl,
-            				customerId : idcustomerId,
-	                    };
-            		
-
-            		if(id!="new"){ //put
-            			
-	            		$http({
-	                        method: 'PUT',
-	                        url: "api/pets/" + id,
-	                        data: JSON.stringify(data),
-	                        headers: {
-	                            'Content-Type': 'application/json'
-	                        }
-	                    }).
-	                    success(function (status) {
-	                    	console.log('OK '+status);
-	                    	/*history.back();*/
-	                    }).
-	                    error(function (status) {
-	                    	console.log('Error: ' + status);;    
-	                    });
-	            	}else{ //post
-	            		
-	            		$http.post("api/pets/", data)
-	            		  .then(
-	            		       function(response){
-	            		    	  $location.url('/customers/' + response.data.pets.customerId);   
-	            		       }, 
-	            		       function(response){
-	            		         // failure callback
-	            		       }
-	            		    );
-	            		
-	            	}
-            		
-                  };	 	
-                  
-                  
-                 
-                
-            	 		
+            		$http.post("api/pets/", data)
+            		  .then(
+	        		       function(response){
+	        		    	  $location.url('/customers/' + response.data.pets.customerId);   
+	        		       }, 
+	        		       function(response){
+	        		         // failure callback
+	        		       }
+            		    );
+            	}
+              };	 	 	 		
         }
     });

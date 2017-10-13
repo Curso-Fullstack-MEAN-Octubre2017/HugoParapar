@@ -1,4 +1,3 @@
-
 var express = require('express');
 var CustomerController = require('../controller/customer.js');
 var PetsController = require('../controller/pets.js');
@@ -17,7 +16,6 @@ api.post('/pets',PetsController.postPets);
 //PUT
 api.put('/customers/:id',CustomerController.updateCustomer);
 api.put('/pets/:id',PetsController.updatePets);
-
 
 
 module.exports = api;
