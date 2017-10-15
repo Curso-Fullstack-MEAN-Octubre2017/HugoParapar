@@ -7,8 +7,7 @@ var app= angular.module('petDetailModule', []);
         controller: function($scope, $http, $routeParams, $location) {
            
             var id = $routeParams.id;
-            var idcustomerId = $routeParams.idCustomer;
-              
+                        
             if(id!="new"){ 
             
             //Todos los datos de la mascota
@@ -19,49 +18,69 @@ var app= angular.module('petDetailModule', []);
             		 $scope.species =  res.data.species;
             		 $scope.race =  res.data.race;
             		 $scope.description =  res.data.description;
-            		 $scope.photoURl =  res.data.photoURl;
+            		 $scope.photoURL =  res.data.photoURL;
             		 $scope.customerId =  res.data.customerId;
             	});
             }   	
             	
         	// PUT/POST   	
         	$scope.submit = function(form) {
-        	
-        		var data = {
-        				chipNumber: $scope.chipNumber,
-        				name: $scope.name,
-        				birthDate: $scope.birthDate,
-        				species: $scope.species,
-        				race: $scope.race,
-        				description: $scope.description,
-        				photoURl: $scope.photoURl,
-        				customerId : idcustomerId,
-                    };
         		
-        		if(id!="new"){ //put
+        		var data = {};
+        		
+        		if(id!="new"){ //Modificar datos de mascota
         			
-        			$http.put("api/customers/"+id, data)
-        				.then(
-    						 function(response){ // success callback
-    							 console.log('OK '+status);
-    						 }, 
-    						 function(response){  // failure callback
-    							 console.log('Error: ' + status);;  
-    						 }
-        				  );
+        			data = {
+            				chipNumber: $scope.chipNumber,
+            				name: $scope.name,
+            				birthDate: $scope.birthDate,
+            				species: $scope.species,
+            				race: $scope.race,
+            				description: $scope.description,
+            				photoURl: $scope.photoURl,	
+                        };
         			
-            	}else{ //post
+        			$http.put("api/pets/"+id, data);
+        				/*.then(
+	        		       function(response){return $location.url('/customers/' + *********idCustomer*********);}, 
+	        		       function(response){console.log("Error: "+response);}
+        				  );*/
+        			
+            	}else{ //Crear mascota
             		
+            	     //Cuando es nuevo se pasa por parametro el ID del dueño. ¡¡Buscar otra forma!!      
+                    //console.log("Id del dueño: "+ $routeParams.idCustomer);
+                    
+                    data = {
+            				chipNumber: $scope.chipNumber,
+            				name: $scope.name,
+            				birthDate: $scope.birthDate,
+            				species: $scope.species,
+            				race: $scope.race,
+            				description: $scope.description,
+            				photoURl: $scope.photoURl,	
+            				customerId: $routeParams.idCustomer
+                        };
+                    	
             		$http.post("api/pets/", data)
-            		  .then(
-	        		       function(response){
-	        		    	  $location.url('/customers/' + response.data.pets.customerId);   
-	        		       }, 
-	        		       function(response){
-	        		         // failure callback
-	        		       }
+            			 .then(
+	        		       function(response){console.log(response); return $location.url('/customers/' + response.data.pets.customerId);}, 
+	        		       function(response){console.log(response);}
             		    );
             	}
               };	 	 	 		
+              
+            // DELETE
+              $scope.delete = function(form) {
+            	  $http.delete('api/pets/'+id)
+            	  		 .then(
+	        		       function(response){return $location.url('/customers/' + response.data.customerId);}, 
+	        		       function(response){console.log("Error: "+response);}
+           		    );
+              
+              }
         }
+    
+    
+    
     });

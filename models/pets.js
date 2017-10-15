@@ -5,11 +5,11 @@ const Schema = mongoose.Schema;
 const petsSchema = Schema({
 	chipNumber: String,
 	name: String,
-	birthDate: String,
+	birthDate: Date,
 	species: String,
 	race: String,
 	description: String,
-	photoURl: String,
+	photoURL: String,
 	customerId: String
 });
 

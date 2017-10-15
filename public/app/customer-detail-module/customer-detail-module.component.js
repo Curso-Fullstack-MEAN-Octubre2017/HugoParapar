@@ -41,15 +41,11 @@ var app= angular.module('customerDetailModule', []);
         		
         		if(id!="new"){ //put
         			
-        			$http.put("api/customers/"+id, data);
-	        			/*   .then(
-	     		       function(response){
-	     		         // success callback
-	     		       }, 
-	     		       function(response){
-	     		         // failure callback
-	     		       }
-	     		    );*/
+        			$http.put("api/customers/"+id, data)
+        				.then(
+ 	        		       function(response){alert("Cliente modificado correctamente");}, 
+ 	        		       function(response){console.log("Error: "+response);}
+            		    );
         			
             	}else{ //post
             		

@@ -1,37 +1,50 @@
 <div>
-	<form name="miForm">
-	  Nombre:<br>
-	  <input type="text" ng-model="firstName" name="firstName"><br>
-	  Apellidos:<br>
-	  <input type="text" ng-model="lastName" name="lastName"><br>
-	  DNI:<br>
-	  <input type="text" ng-model="dni" name="dni"><br>
-	  E-mail:<br>
-	  <input type="text" ng-model="email" name="email"><br>
-	  Teléfono:<br>
-	  <input type="text" ng-model="phoneNumber" name="phoneNumber"><br>
-	  Notas:<br>
-	  <input type="text" ng-model="note" name="note"><br>
-	  <br>
-	  
-	  
-	   <button data-ng-click="submit(miForm)" class="btn btn-default">Guardar</button>
-	  
-	  
-	 
+	<form class="col s12 m6 l6 marginTop2" name="miForm">
+	 	<fieldset>
+	    <legend>Datos del cliente</legend>
+		<div class="input-field col s3">
+			<input type="text" id="firstName" class="validate" ng-model="firstName">
+			<label class="active" for="firstName">Nombre</label>
+		</div>
+		<div class="input-field col s6">
+			<input type="text" id="lastName" class="validate" ng-model="lastName">
+			<label class="active" for="lastName">Apellidos</label>
+		</div>
+		<div class="input-field col s3">
+			<input type="text" id="dni" class="validate" ng-model="dni">
+			<label class="active" for="dni" >DNI</label>
+		</div> 
+		<div class="input-field col s5">
+			<input type="text" id="phoneNumber" class="validate" ng-model="phoneNumber">
+			<label class="active" for="phoneNumber">Teléfono</label>
+		</div>
+		<div class="input-field col s7">
+			<input type="text" id="email" class="validate" ng-model="email">
+			<label class="active" for="email">E-mail</label>
+		</div>
+		<div class="input-field col s12">
+			<textarea id="note" class="materialize-textarea" ng-model="note"></textarea>
+         	<label for="note" class='active'>Notas</label>
+		</div> 
+		<button data-ng-click="submit(miForm)" class="waves-effect waves-light btn right">Guardar cambios</button>
+		</fieldset>
 	</form>
-	
-	
-	  <br>
-	  <hr>
-	  
-	  <p>Mascotas: </p>
-	  <br>
-	  <ul>
-        <li ng-repeat="p in petsList | orderBy: 'name'" > 
-           <a ng-href="pets/{{p._id}}">  <p>{{p.name}}</p></a>
-        </li>
-    </ul>
-    
-        <a class="btn-floating btn-large waves-effect waves-light teal darken-4 right"  role="button" id="boton"><i class="material-icons">add</i></a>
+	<div class="col s12 m6 l6 marginTop2">
+		<fieldset>
+		<legend>Mascotas</legend>
+		<ul class="collection">
+			<li class="collection-item avatar" ng-repeat="p in petsList | orderBy: 'name'">
+				<a ng-href="pets/{{p._id}}">
+					<i class="material-icons circle">pets</i><img src="img/{{p.photoURL}}" class="circle"/><p>{{p.name}}</p><spam class="secondary-content"><i class="material-icons">fullscreen</i></spam>
+				</a>
+			</li>
+	  	</ul>
+		<a class="btn-floating waves-effect waves-light teal darken-4 right"  role="button" id="boton"><i class="material-icons">add</i></a>
+		</fieldset>
+	</div>
+	<div class="col s12 m12 l12 marginTop2">
+		<fieldset>
+		<legend>Citas</legend>
+		</fieldset>
+	</div>
 </div>

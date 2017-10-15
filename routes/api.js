@@ -15,7 +15,9 @@ api.post('/pets',PetsController.postPets);
 
 //PUT
 api.put('/customers/:id',CustomerController.updateCustomer);
-api.put('/pets/:id',PetsController.updatePets);
+api.put('/pets/:id',PetsController.updatePet);
 
+//DELETE
+api.delete('/pets/:id',PetsController.deletePet);
 
 module.exports = api;

@@ -2,10 +2,8 @@ var mongoose = require('mongoose');
 var Pets = require('../models/pets.js');
 
 function postPets(req,res){
-	
 	var pets = new Pets(req.body);
 		pets.save((err,petsStored) =>{
-			
 			if(err) return res.status(500).send({message: "Error al guardar la mascota"});
 			if(!petsStored) return res.status(404).send({message: "No se registro la mascota"});
 			res.status(200).send({pets: petsStored});	
@@ -13,41 +11,35 @@ function postPets(req,res){
 }
 
 function getPetsByCustomerId(req,res){
-	
 	Pets.find({customerId: req.params.id})
-		.select('name species photoURl')
-		.exec(function (err,petsStored) {
+		.select('name species photoURL')
+		.exec(function (err,pets) {
 			if(err) return res.status(500).send({message: "Error"});
-			res.send(200, petsStored);			
+			res.send(200, pets);			
 	});
 }
 
 function getPetsById(req,res){
-
-	Pets.findById(req.params.id, (err,petsStored) =>{
-		if(err) return res.status(500).send({message: "Error"});
-		res.send(200, petsStored);			
-	});
-}
-
-function updatePets(req,res){
-	
 	Pets.findById(req.params.id, (err,pets) =>{
-		
-		pets.chipNumber = req.body.chipNumber;
-		pets.name = req.body.name;
-		pets.birthDate =   req.body.birthDate;
-		pets.species =  req.body.species;
-		pets.race =  req.body.race;
-		pets.description =  req.body.description;
-		pets.photoURl =  req.body.photoURl;
-		pets.customerId =  req.body.customerId;
-		
-		pets.save((err, petsStored) => {
-            if (err) {res.status(500).send({message: "Error"})}
-            res.status(200).send(petsStored);
-        });	
+		if(err) return res.status(500).send({message: "Error"});
+		res.send(200, pets);			
 	});
 }
 
-module.exports = {postPets, getPetsByCustomerId, getPetsById, updatePets};
+function updatePet(req,res){
+	Pets.findByIdAndUpdate(req.params.id, req.body, (err,petUpdate) =>{
+		if(err)res.status(500).send({message: "Error al actualizar la mascota"});
+		if(!petUpdate)res.status(404).send({message: "No se puede actualizar la mascota"});
+		res.send(200, petUpdate);		
+	});
+}
+
+function deletePet(req,res){
+	Pets.findByIdAndRemove(req.params.id, (err,petDelete)  =>{
+		if(err)res.status(500).send({message: "Error al borrar la mascota"});
+		if(!petDelete)res.status(404).send({message: "No se puede borrar la mascota"});
+		res.send(200,petDelete);
+	});
+}
+
+module.exports = {postPets, getPetsByCustomerId, getPetsById, updatePet, deletePet};

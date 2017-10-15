@@ -16,6 +16,7 @@ app.component('customerModule', {
         	}
         	
         	$http.get('api/customers').then(function(res) {
+        		$('.preloader').fadeOut();
         		$scope.customerList = res.data;
         	});
   	
