@@ -3,33 +3,33 @@
 	 	<fieldset>
 	    <legend>Datos del cliente</legend>
 		<div class="input-field col s3">
-			<input type="text" id="firstName" class="validate" ng-model="firstName">
+			<input type="text" id="firstName" class="validate" ng-model="c.firstName">
 			<label class="active" for="firstName">Nombre</label>
 		</div>
 		<div class="input-field col s6">
-			<input type="text" id="lastName" class="validate" ng-model="lastName">
+			<input type="text" id="lastName" class="validate" ng-model="c.lastName">
 			<label class="active" for="lastName">Apellidos</label>
 		</div>
 		<div class="input-field col s3">
-			<input type="text" id="dni" class="validate" ng-model="dni">
+			<input type="text" id="dni" class="validate" ng-model="c.dni">
 			<label class="active" for="dni" >DNI</label>
 		</div> 
 		<div class="input-field col s5">
-			<input type="text" id="phoneNumber" class="validate" ng-model="phoneNumber">
+			<input type="text" id="phoneNumber" class="validate" ng-model="c.phoneNumber">
 			<label class="active" for="phoneNumber">Teléfono</label>
 		</div>
 		<div class="input-field col s7">
-			<input type="text" id="email" class="validate" ng-model="email">
+			<input type="text" id="email" class="validate" ng-model="c.email">
 			<label class="active" for="email">E-mail</label>
 		</div>
 		<div class="input-field col s12">
-			<textarea id="note" class="materialize-textarea" ng-model="note"></textarea>
+			<textarea id="note" class="materialize-textarea" ng-model="c.note"></textarea>
          	<label for="note" class='active'>Notas</label>
 		</div> 
 		<button data-ng-click="submit(miForm)" class="waves-effect waves-light btn right">Guardar cambios</button>
 		</fieldset>
 	</form>
-	<div class="col s12 m6 l6 marginTop2">
+	<div class="col s12 m6 l6 marginTop2 put">
 		<fieldset>
 		<legend>Mascotas</legend>
 		<ul class="collection">
@@ -42,7 +42,7 @@
 		<a class="btn-floating waves-effect waves-light teal darken-4 right"  role="button" id="boton"><i class="material-icons">add</i></a>
 		</fieldset>
 	</div>
-	<div class="col s12 m12 l12 marginTop2">
+	<div class="col s12 m12 l12 marginTop2 put">
 		<fieldset>
 		<legend>Citas</legend>
 		</fieldset>

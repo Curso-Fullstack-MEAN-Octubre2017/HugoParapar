@@ -12,12 +12,7 @@ var app= angular.module('customerDetailModule', []);
             
             //Todos los datos del cliente
             	$http.get('api/customers/'+id).then(function(res) {
-            		 $scope.firstName =  res.data.firstName;
-            		 $scope.lastName =  res.data.lastName;
-            		 $scope.dni =  res.data.dni;
-            		 $scope.email =  res.data.email;
-            		 $scope.phoneNumber =  res.data.phoneNumber;
-            		 $scope.note =  res.data.note;
+            		$scope.c = res.data;
             	});
             
             //Mascotas del cliente
@@ -26,49 +21,31 @@ var app= angular.module('customerDetailModule', []);
             		$scope.petsList = res.data;						
             	});    
             }   	
-            	
+
         	// PUT/POST   	
         	$scope.submit = function(form) {
         	
-        		var data = {
-                        firstName: $scope.firstName,
-                        lastName: $scope.lastName,
-                        dni: $scope.dni,
-                        email: $scope.email,
-                        phoneNumber: $scope.phoneNumber,
-                        note: $scope.note,
-        		};
-        		
-        		if(id!="new"){ //put
-        			
-        			$http.put("api/customers/"+id, data)
-        				.then(
- 	        		       function(response){alert("Cliente modificado correctamente");}, 
- 	        		       function(response){console.log("Error: "+response);}
-            		    );
-        			
-            	}else{ //post
-            		
-            		$http.post("api/customers/", data);
-            		/*   .then(
-            		       function(response){
-            		         // success callback
-            		       }, 
-            		       function(response){
-            		         // failure callback
-            		       }
-            		    );*/	
-            	}	
-              };	 
+        		var data = $scope.c;
 
+        		if(id!="new"){ //put
+        			$http.put("api/customers/"+id, data);
+            	}else{ //post
+            		$http.post("api/customers/", data)
+            		     .then(
+            		       function(response){return $location.url('/customers/' + response.data.customer._id);}, 
+            		       function(response){console.log("Error: "+response);}
+            		    );	
+            	}	
+              };
               
-//Crear nueva mascota a través del id del dueño
+            //Ocultar añadir mascota si es un nuevo usuario
+              if(id=="new") $('.put').hide();
+
+            //Crear nueva mascota a través del id del dueño
               
               $( "#boton").click(function() {
             	  $location.url('/pets/new?idCustomer=' + id);
             	  $scope.$apply();
-            	});
-//¿¿¿¿¿¿¿¿¿¿¿¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡!!!!!!!!!!!!!!?????????????? 
-            	 		
+            	});	 		
         }
     });

@@ -29,7 +29,7 @@ app.component('customerModule', {
 
 app.filter('startFrom', function() {
     return function(input, start) {
-        start = +start; //parse to int
+        start = +start;
         return input.slice(start);
     }
 });

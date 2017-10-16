@@ -3,27 +3,27 @@
 	 	<fieldset>
 	    <legend>Datos de la mascota</legend>
 		<div class="input-field col s6">
-			<input type="text" id="name" class="validate" ng-model="name">
+			<input type="text" id="name" class="validate" ng-model="pet.name">
 			<label class="active" for="name">Nombre</label>
 		</div>
 		<div class="input-field col s6">
-			<input type="text" id="birthDate" class="datepicker" ng-model="birthDate">
+			<input type="text" id="birthDate" class="datepicker" ng-model="pet.birthDate">
 			<label class="active" for="birthDate" >Cumpleaños</label>
 		</div> 
 		<div class="input-field col s12">
-			<input type="text" id="chipNumber" class="validate" ng-model="chipNumber">
+			<input type="text" id="chipNumber" class="validate" ng-model="pet.chipNumber">
 			<label class="active" for="chipNumber">Número de Chip</label>
 		</div>
 		<div class="input-field col s6">
-			<input type="text" id="species" class="validate" ng-model="species">
+			<input type="text" id="species" class="validate" ng-model="pet.species">
 			<label class="active" for="species">Especie</label>
 		</div>
 		<div class="input-field col s6">
-			<input type="text" id="race" class="validate" ng-model="race">
+			<input type="text" id="race" class="validate" ng-model="pet.race">
 			<label class="active" for="race">Raza</label>
 		</div>
 		<div class="input-field col s12">
-			<textarea id="description" class="materialize-textarea" ng-model="description"></textarea>
+			<textarea id="description" class="materialize-textarea" ng-model="pet.description"></textarea>
          	<label for="description" class='active'>Descripción</label>
 		</div> 
 		<button data-ng-click="submit(miForm)" class="btn btn-default">Guardar</button>
@@ -34,17 +34,17 @@
 		<fieldset class="center">
 		<legend>Foto</legend>
 			<div>
-				<img ng-src="img/{{photoURL}}" class="circle"/>
+				<img ng-src="img/{{pet.photoURL}}" class="circle"/>
 			</div>
-			<div class="file-field input-field col s12">
+			<!--<div class="file-field input-field col s12">
 		      <div class="btn right">
 		        <span>Subir foto</span>
 		        <input type="file">
 		      </div>
-		      <!--  <div class="file-path-wrapper">
+		       <div class="file-path-wrapper">
 		        <input class="file-path validate" type="text" ng-model="photoURl">
-		      </div>-->
-		    </div> 
+		      </div>
+		    </div> -->
 		</fieldset>
 	</div>
 </div>
