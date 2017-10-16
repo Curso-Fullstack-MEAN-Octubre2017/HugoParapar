@@ -34,33 +34,18 @@
 		<fieldset class="center">
 		<legend>Foto</legend>
 			<div>
-				<img  ng-src="img/{{photoURL}}" class="circle"/>
+				<img ng-src="img/{{photoURL}}" class="circle"/>
 			</div>
-			<!-- Subir foto de la mascota SIN ACABAR
 			<div class="file-field input-field col s12">
 		      <div class="btn right">
 		        <span>Subir foto</span>
 		        <input type="file">
 		      </div>
-		      <div class="file-path-wrapper">
+		      <!--  <div class="file-path-wrapper">
 		        <input class="file-path validate" type="text" ng-model="photoURl">
-		      </div>
-		    </div>  -->
+		      </div>-->
+		    </div> 
 		</fieldset>
 	</div>
 </div>
-	
-	<script>
-	$('.datepicker').pickadate({
-    selectMonths: true,
-    selectYears: 20,
-    today: 'Hoy',
-    clear: '',
-    close: 'SELECCIONAR',
-    closeOnSelect: false,
-   // format: 'dd/mm/yyyy',
-   // formatSubmit: Date,
-    min: undefined,
-    max: 2017
-  });
-  </script>
+<script src="/app/js/fechas.js"></script>

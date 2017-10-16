@@ -7,14 +7,14 @@ var app= angular.module('petDetailModule', []);
         controller: function($scope, $http, $routeParams, $location) {
            
             var id = $routeParams.id;
-                        
+            
             if(id!="new"){ 
             
             //Todos los datos de la mascota
             	$http.get('api/pets/'+id).then(function(res) {
             		 $scope.chipNumber =  res.data.chipNumber;
             		 $scope.name =  res.data.name;
-            		 $scope.birthDate =  res.data.birthDate;
+            		 $scope.birthDate =  moment(res.data.birthDate).format('DD MMM YYYY', 'es');
             		 $scope.species =  res.data.species;
             		 $scope.race =  res.data.race;
             		 $scope.description =  res.data.description;
