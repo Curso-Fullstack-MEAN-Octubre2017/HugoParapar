@@ -11,6 +11,7 @@ api.get('/customers/:id/pets',PetsController.getPetsByCustomerId);
 api.get('/pets/:id',PetsController.getPetsById);
 api.get('/appointments',AppoinmentController.getAppoinments);
 api.get('/appointments/:id',AppoinmentController.getAppoinmentById);
+api.get('/appointments/:fromdate/:todate',AppoinmentController.getAppoinmentByDate);
 
 //POST
 api.post('/customers',CustomerController.postCustomer);
