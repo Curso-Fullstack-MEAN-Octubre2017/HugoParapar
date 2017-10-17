@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var moment = require('moment');
 
 //var sample = require('./routes/sample');
 
@@ -26,9 +27,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//// Nuevas Rutas van aqui:
-//app.use('/sample', sample);
+//Test
+//require("./test/appointments_crud_tests.js");
 
+// Nuevas Rutas van aqui:
 app.use('/api/',customerRoutes);
 
 
@@ -36,7 +38,6 @@ app.use('/api/',customerRoutes);
 app.all("*", (req, res) => {
 res.sendFile(path.resolve("public/index.html"));
 })
-
 
 
 module.exports = app;
