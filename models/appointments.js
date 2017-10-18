@@ -5,9 +5,10 @@ const Schema = mongoose.Schema;
 const status = {cancelado: -1, pendiente:0, enCurso:1, terminado:2}
 
 const appointmentSchema = Schema({
-	dateTime: {type: Date, required: true},
+	dateTimeI: {type: Date, required: true},
+	dateTimeF: {type: Date, required: true},
 	petId: {type: String, required: true},
-	vetId: {type: Schema.ObjectId, ref: "Vet"},
+	vetId: {type: String},
 	status: {type: Number, default: 0} 
 });
 

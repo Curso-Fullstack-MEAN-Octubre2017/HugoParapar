@@ -41,12 +41,12 @@ function getAppByDate(req,res){
 	var dateStart = moment(req.params.fromdate,"YYYYMMDD");
 	var dateEnd = moment( req.params.todate,"YYYYMMDD");
 
-	App.find({dateTime: { $gte: dateStart,$lte: dateEnd }
-	    },(err, appointments) => {
+	App.find({dateTimeI: { $gte: dateStart,$lte: dateEnd }
+	    },(err, apps) => {
 	        if (err) {
 	            res.json({ success: false, message: err });
 	        } else {
-	            res.status(200).send(appointments);
+	            res.status(200).send(apps);
 	        }
 		}).populate({
 		            path: 'petId',
@@ -59,6 +59,29 @@ function getAppByDate(req,res){
 		            }
 		}).sort({ 'dateTime': 1 });
 
+	App.aggregate([
+        {
+        	
+        $project: {
+            
+        	$date: { $dateToString: { format: "%G-%m-%d", date: "$dateTimeI" } }
+         },
+        	
+            $group: {
+            	_id: '$date' 
+            }
+        }
+    ], function (err, result) {
+        if (err) {
+        	res.json({ success: false, message: err });
+        } else {
+        	console.log(result);
+        	res.json(result);
+            
+        }
+    });
+	
+	
 }
 
 module.exports = {postApp, getApp, getAppById, updateApp, getAppByDate};

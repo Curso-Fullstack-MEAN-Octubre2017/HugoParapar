@@ -10,7 +10,7 @@ const petsSchema = Schema({
 	race: {type: String, required: true},
 	description: {type: String, required: true},
 	photoURL: {type: String, required: true},
-	customerId: {type: Schema.ObjectId, ref: "Customer", required: true}
+	customerId: {type: String, required: true}
 });
 
 module.exports = mongoose.model("Pets", petsSchema);
