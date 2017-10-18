@@ -40,13 +40,13 @@ function getAppByDate(req,res){
 	
 	var dateStart = moment(req.params.fromdate,"YYYYMMDD");
 	var dateEnd = moment( req.params.todate,"YYYYMMDD");
-
+/*
 	App.find({dateTimeI: { $gte: dateStart,$lte: dateEnd }
 	    },(err, apps) => {
 	        if (err) {
 	            res.json({ success: false, message: err });
 	        } else {
-	            res.status(200).send(apps);
+	            return res.json(apps);
 	        }
 		}).populate({
 		            path: 'petId',
@@ -57,30 +57,41 @@ function getAppByDate(req,res){
 		                model: 'Customer',
 		                select: 'firstName lastName'
 		            }
-		}).sort({ 'dateTime': 1 });
+		}).sort({ 'dateTimeI': 1 });*/
 
 	App.aggregate([
         {
         	
+/*  	
         $project: {
-            
         	$date: { $dateToString: { format: "%G-%m-%d", date: "$dateTimeI" } }
          },
+*/
         	
-            $group: {
-            	_id: '$date' 
-            }
+/*    	
+ 		$group: {
+			_id: { $dateToString: { format: "%G-%m-%d", date: "$dateTimeI" } },
+            count: { $sum: 1 }},
+*/
+       
+        	
+        	
+        $lookup: {from: 'pets', localField: 'petId', foreignField: '_id.str', as: 'datosPets'} 
+            	
+        
+            	/* _id : { fecha: { $month: "$dateTimeI" }, day: { $dayOfMonth: "$dateTimeI" }, year: { $year: "$dateTimeI" } },*/
+                
+           /* }*/
         }
     ], function (err, result) {
         if (err) {
         	res.json({ success: false, message: err });
         } else {
-        	console.log(result);
+
         	res.json(result);
             
         }
     });
-	
 	
 }
 

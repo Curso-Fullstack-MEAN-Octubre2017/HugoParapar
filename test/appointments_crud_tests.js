@@ -4,8 +4,8 @@
 const Appointments = require('../models/appointments');
 var moment = require('moment')
 
-var inicio = moment("2017-10-16T09:00:00Z");
-var fin =   moment("2017-10-16T09:30:00Z");
+var inicio = moment("2017-10-18T09:00:00Z");
+var fin =   moment("2017-10-18T09:30:00Z");
 
 	for(var i=0;i<=24;i++){
 	
