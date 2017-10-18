@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var App = require('../models/appointments.js');
+var Customer = require('../models/customers.js');
+var Pets = require('../models/pets.js');
 var moment = require('moment');
 
 function postApp(req,res){
@@ -36,20 +38,27 @@ function updateApp(req,res){
 
 function getAppByDate(req,res){
 	
-	var from = req.params.fromdate; //20171001
-		var dateStart = moment(from,"YYYYMMDD");
-	var to = req.params.todate; //20171101
-		var dateEnd = moment(to,"YYYYMMDD");
+	var dateStart = moment(req.params.fromdate,"YYYYMMDD");
+	var dateEnd = moment( req.params.todate,"YYYYMMDD");
 
-	 var busqueda = {};
-	 busqueda['dateTime'] = {$gte: dateStart, $lte: dateEnd};
-	
-	App.find(busqueda).exec(function(err, fechas) {
-	    if (err)return console.log('err',err);
-	    console.log('fechas',fechas)
-	     res.status(200).send(fechas);		
-	})
-	
+	App.find({dateTime: { $gte: dateStart,$lte: dateEnd }
+	    },(err, appointments) => {
+	        if (err) {
+	            res.json({ success: false, message: err });
+	        } else {
+	            res.status(200).send(appointments);
+	        }
+		}).populate({
+		            path: 'petId',
+		            model: 'Pets',
+		            select: 'name specie',
+		            populate: {
+		                path: 'customerId',
+		                model: 'Customer',
+		                select: 'firstName lastName'
+		            }
+		}).sort({ 'dateTime': 1 });
+
 }
 
 module.exports = {postApp, getApp, getAppById, updateApp, getAppByDate};
