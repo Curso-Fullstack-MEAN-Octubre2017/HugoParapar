@@ -40,13 +40,27 @@ function getAppByDate(req,res){
 	
 	var dateStart = moment(req.params.fromdate,"YYYYMMDD");
 	var dateEnd = moment( req.params.todate,"YYYYMMDD");
-/*
-	App.find({dateTimeI: { $gte: dateStart,$lte: dateEnd }
-	    },(err, apps) => {
+
+	//,{"status": {$gte:0}}
+	//{dateTimeI: { $gte: dateStart,$lte: dateEnd }}
+	
+	App.find({dateTimeI:{$gte:dateStart,$lte: dateEnd},status:{$gt:-1}},(err, busqueda) => {
 	        if (err) {
 	            res.json({ success: false, message: err });
 	        } else {
-	            return res.json(apps);
+	          
+	        	  var agrupar = busqueda.reduce(function (obj, item) { 
+	  		            
+	        		  var fecha = moment(item.dateTimeI).format('YYYY-MM-DD');
+	        		  var horaI = moment(item.dateTimeI).utc().format('HH:mm');
+	        		  
+	        		  if(obj[fecha] == null ) obj[fecha] = {};
+	        		  if(obj[fecha][horaI] == null ) obj[fecha][horaI] = item ;
+	        		  
+	  		          return obj;
+	  		            
+	  		      }, {});
+	        	  res.json(agrupar);
 	        }
 		}).populate({
 		            path: 'petId',
@@ -57,42 +71,7 @@ function getAppByDate(req,res){
 		                model: 'Customer',
 		                select: 'firstName lastName'
 		            }
-		}).sort({ 'dateTimeI': 1 });*/
-
-	App.aggregate([
-        {
-        	
-/*  	
-        $project: {
-        	$date: { $dateToString: { format: "%G-%m-%d", date: "$dateTimeI" } }
-         },
-*/
-        	
-/*    	
- 		$group: {
-			_id: { $dateToString: { format: "%G-%m-%d", date: "$dateTimeI" } },
-            count: { $sum: 1 }},
-*/
-       
-        	
-        	
-        $lookup: {from: 'pets', localField: 'petId', foreignField: '_id.str', as: 'datosPets'} 
-            	
-        
-            	/* _id : { fecha: { $month: "$dateTimeI" }, day: { $dayOfMonth: "$dateTimeI" }, year: { $year: "$dateTimeI" } },*/
-                
-           /* }*/
-        }
-    ], function (err, result) {
-        if (err) {
-        	res.json({ success: false, message: err });
-        } else {
-
-        	res.json(result);
-            
-        }
-    });
-	
+		}).sort({ 'dateTimeI': 1 });
 }
 
 module.exports = {postApp, getApp, getAppById, updateApp, getAppByDate};
