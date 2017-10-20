@@ -1,3 +1,65 @@
 <section>
-<h4>Calendario</h4>
+	<nav class="nav">
+		<div class="prev"><a href="appointments/{{p}}"><i class="material-icons">chevron_left</i></a> </div>
+		<div class="current">   {{m | date:'MMMM yyyy'}}  </div>
+		<div class="next"><a href="appointments/{{n}}"><i class="material-icons">chevron_right</i></a> </div>
+	</nav>
+	<div class="calendario">		
+	<table>
+        <tbody>
+			<tr class="days">
+		       <th itle="Lunes">Lunes</th>
+		       <th title="Martes">Martes</th>
+		       <th title="Miercoles">Miercoles</th>
+		       <th title="Jueves">Jueves</th>
+		       <th title="Viernes">Viernes</th>
+		       <th title="Sábado">Sábado</th>
+		       <th title="Domingo">Domingo</th>
+			</tr>
+			<tr ng-repeat="days in dates">
+	         <td ng-repeat="day in days"  >
+	             {{ day.date }}
+	               {{ day.appsCount }}
+	         
+	            
+	          
+	         
+	            
+	           
+	          
+	          
+	        </td>
+	     </tr>
+		          
+          
+          
+        </tbody>
+	</table>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<!-- 
+			<calendar></calendar> -->
+			
+			
+			
+	
+		
+	</div>
 </section>
+
+<style>
+
+.nav{display:flex}
+td, th {
+    border: 1px #ccc solid;
+}
+
+</style>

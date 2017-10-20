@@ -44,7 +44,7 @@ function getAppByDate(req,res){
 	//,{"status": {$gte:0}}
 	//{dateTimeI: { $gte: dateStart,$lte: dateEnd }}
 	
-	App.find({dateTimeI:{$gte:dateStart,$lte: dateEnd},status:{$gt:-1}},(err, busqueda) => {
+	App.find({dateTimeI:{$gte:dateStart,$lt: dateEnd},status:{$gt:-1}},(err, busqueda) => {
 	        if (err) {
 	            res.json({ success: false, message: err });
 	        } else {
