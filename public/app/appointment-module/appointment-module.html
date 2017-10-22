@@ -6,7 +6,7 @@
 	</nav>
 	<!-- <calendar></calendar> -->
 	<div class="calendario">		
-		<table class="striped "> 
+		<table class="striped"> 
 	        <tbody>
 				<tr class="days">
 			       <th title="Lunes">Lunes</th>
@@ -18,7 +18,7 @@
 			       <th title="Domingo">Domingo</th>
 				</tr>
 				<tr ng-repeat="days in dates">
-					<td ng-repeat="day in days">
+					<td ng-repeat="day in days"> <!-- ng-click="abrir(day.date)" -->
 		            	<b>{{ day.date }}</b><br> 
 		                <h5 class="center-align">{{day.contador}}</h5>
 		        	</td>

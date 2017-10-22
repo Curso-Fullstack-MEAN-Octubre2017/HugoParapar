@@ -22,6 +22,9 @@ angular.module('petStore')
             .when("/appointments/:mes?",{
                 template: "<appointment-module></appointment-module>"
             })
+            .when("/appointments/day/:dia?",{
+                template: "<apps-day-module></apps-day-module>"
+            })
             .otherwise({
                 template: "Other"
             });
