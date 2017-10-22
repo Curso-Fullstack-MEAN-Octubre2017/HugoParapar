@@ -1,65 +1,35 @@
 <section>
 	<nav class="nav">
 		<div class="prev"><a href="appointments/{{p}}"><i class="material-icons">chevron_left</i></a> </div>
-		<div class="current">   {{m | date:'MMMM yyyy'}}  </div>
+		<div class="current">{{m | date:'MMMM yyyy'}}</div>
 		<div class="next"><a href="appointments/{{n}}"><i class="material-icons">chevron_right</i></a> </div>
 	</nav>
+	<!-- <calendar></calendar> -->
 	<div class="calendario">		
-	<table>
-        <tbody>
-			<tr class="days">
-		       <th itle="Lunes">Lunes</th>
-		       <th title="Martes">Martes</th>
-		       <th title="Miercoles">Miercoles</th>
-		       <th title="Jueves">Jueves</th>
-		       <th title="Viernes">Viernes</th>
-		       <th title="Sábado">Sábado</th>
-		       <th title="Domingo">Domingo</th>
-			</tr>
-			<tr ng-repeat="days in dates">
-	         <td ng-repeat="day in days"  >
-	             {{ day.date }}
-	               {{ day.appsCount }}
-	         
-	            
-	          
-	         
-	            
-	           
-	          
-	          
-	        </td>
-	     </tr>
-		          
-          
-          
-        </tbody>
-	</table>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			<!-- 
-			<calendar></calendar> -->
-			
-			
-			
-	
-		
+		<table class="striped "> 
+	        <tbody>
+				<tr class="days">
+			       <th title="Lunes">Lunes</th>
+			       <th title="Martes">Martes</th>
+			       <th title="Miercoles">Miercoles</th>
+			       <th title="Jueves">Jueves</th>
+			       <th title="Viernes">Viernes</th>
+			       <th title="Sábado">Sábado</th>
+			       <th title="Domingo">Domingo</th>
+				</tr>
+				<tr ng-repeat="days in dates">
+					<td ng-repeat="day in days">
+		            	<b>{{ day.date }}</b><br> 
+		                <h5 class="center-align">{{day.contador}}</h5>
+		        	</td>
+		     	</tr>
+	        </tbody>
+		</table>
 	</div>
 </section>
 
 <style>
-
 .nav{display:flex}
-td, th {
-    border: 1px #ccc solid;
-}
-
+th{text-align: center;}
+td, th {border: 1px #ccc solid;}
 </style>

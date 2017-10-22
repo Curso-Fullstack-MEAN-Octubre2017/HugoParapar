@@ -16,10 +16,9 @@ app.component('appointmentModule', {
         	$scope.p = moment(mes).add(-1,'M').format("YYYYMM");
         	$scope.n = moment(mes).add(1,'M').format("YYYYMM");
         	var mesI =  moment(mes.toDate()).format("YYYYMM");
-        	var before = moment(mes).add(1,'M').toDate();
+        	var mesF = moment(mes).add(1,'M').toDate();
         	
         	$scope.cells = []
-        	
         	
         	var rellenar = mes.weekday();
         	for (var i=0; i < rellenar ; i++){
@@ -30,85 +29,26 @@ app.component('appointmentModule', {
         		
         		$scope.app = res.data;
         		
-        		
-        		
-        		for(var m = moment(mes); m.isBefore(before); m.add(1,'days')){
+        		for(var m = moment(mes); m.isBefore(mesF); m.add(1,'days')){
         			
-        			var currentDate = m.format("DD");
-        			var currentDate2 = m.format("YYYY-MM-DD");
-        			
-
-            		//console.log( $scope.app[currentDate2]);
+        			var formatoDia = m.format("D");
+        			var formatoLargo = m.format("YYYY-MM-DD");
         			
         			$scope.cells.push({
-        				date: currentDate,
-        				apps: $scope.app[currentDate2]
+        				date: formatoDia,
+        				apps: $scope.app[formatoLargo],
+        				contador: $scope.app[formatoLargo] ? Object.keys($scope.app[formatoLargo]).length : 0
         			});
-        			
-        			
-        			if ($scope.app[currentDate2]) {
-        			   
-		        		$scope.cells.push({
-		        			appsCount: Object.keys($scope.app[currentDate2]).length
-		        		});
-        			}
         		}		
 
             	var dates = [];
-                for (var i = 0; i < $scope.cells.length; i++ ) {
+                
+            	for (var i = 0; i < $scope.cells.length; i++ ) {
                     if (i % 7 == 0) dates.push([]);
                     dates[dates.length-1].push($scope.cells[i]);
                 }
              
-                //console.log($scope.cells)
-                
                 return $scope.dates = dates;
-              
-            
-        	
-          	});
-        
-        	
-        	
-        	
-        	
+          	});	
         }
 });
-
-/*
-app.directive('calendar', function() {
-    // Requires that scope contains a 'monthDays' array.
-    // Adds 'weeks' to scope.
-    return {
-        restrict: 'E',
-        replace: true,
-        template: '<table cellspacing="0" cellpadding="0">'
-        + '<colgroup span="7"></colgroup>' 
-        + '<tbody>' 
-        + '<tr class="days">'
-        + '<th scope="col" title="Lunes">Lunes</th>' 
-        + '<th scope="col" title="Martes">Martes</th>' 
-        + '<th scope="col" title="Miercoles">Miercoles</th>' 
-        + '<th scope="col" title="Jueves">Jueves</th>' 
-        + '<th scope="col" title="Viernes">Viernes</th>' 
-        + '<th scope="col" title="Sábado">Sábado</th>' 
-        + '<th scope="col" title="Domingo">Domingo</th>' 
-        + '</tr>'
-        + '<tr ng-repeat="week in weeks">'
-        + '<td ng-repeat="day in week">{{day}}</td>'
-        + '</tr></tbody></table>',
-        link: function(scope) {
-        	
-        	
-        	console.log(scope.cells.length);
-        	
-            scope.weeks = [];
-            for (var i = 0; i < scope.cells.length; i++) {
-                if (i % 7 == 0) scope.weeks.push([]);
-                scope.weeks[scope.weeks.length-1].push(scope.cells[i]);
-            }
-        }
-    }
-})
-*/
-
