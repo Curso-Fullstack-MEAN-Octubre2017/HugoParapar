@@ -8,5 +8,6 @@ angular.module('petStore', [
     'petDetailModule',
     'appsService',
     'appointmentModule',
-    'appsDayModule'
+    'appsDayModule',
+    'appDetailModule'
 ]);

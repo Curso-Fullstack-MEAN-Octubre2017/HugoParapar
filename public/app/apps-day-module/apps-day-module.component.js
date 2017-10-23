@@ -18,19 +18,15 @@ app.component('appsDayModule', {
 
             	apps = apps || {};
             
-                var openingHour = moment(day).hour(9);
-                var closingHour = moment(day).hour(21);
-                for(var hour = moment(openingHour); hour.isBefore(closingHour); hour.add(0.5, 'h')) {
+                var abierto = moment(day).hour(9);
+                var cerrado = moment(day).hour(21);
+                for(var hour = moment(abierto); hour.isBefore(cerrado); hour.add(0.5, 'h')) {
                     var hourKey = hour.format('HH:mm');
                     $scope.listHourApps.push({
                         hour: hourKey,
                         app: apps[hourKey]
                     });
                 }          	
-            });
-            
-            $scope.openAppointment = (id) => {
-                alert(id);  
-            };
+            }); 
         }
 });

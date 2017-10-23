@@ -6,8 +6,6 @@ angular.module('appsService',[]).factory('appsService', function($http, $q){
 	
 	service._appsMapByMonth = {};
 	
-	
-	
 	//Devuelve una promesa con el mapa de las CITAS de un MES
 	service.getMonthApps = (month) => {
 		var promesa = $q.defer();
@@ -55,6 +53,18 @@ angular.module('appsService',[]).factory('appsService', function($http, $q){
 		return promesa.promise;
 }
 	
+	//Devuelve la CITA por ID
+	service.getAppById = (id)  => {
+		var promesa = $q.defer();
+    	$http.get("/api/appointments/" + id)
+    		.success( function(response) {
+    			promesa.resolve(response);
+	    	})
+	    	.error(function(err) {
+	    		promesa.reject(err)
+			});
+    	return promesa.promise;
+}
 	
 	
 	return service;

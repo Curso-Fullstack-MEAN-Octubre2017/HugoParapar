@@ -8,8 +8,8 @@
 			<td>{{h.hour}}</td> 
 			<td><span ng-show="h.app">Nombre mascota: {{h.app.petId.name}}, Dueño: {{h.app.petId.customerId.firstName}}<span></td> 
 			<td>
-				<a ng-show="h.app" href="/appointments/{{h.app._id}}"><i class="material-icons">edit</i></a>
-				<a ng-show="!h.app" href="/appointments/{{day+'-'+h.hour}}"><i class="material-icons">add</i></a>
+				<a ng-show="h.app" href="/appointment/{{h.app._id}}"><i class="material-icons">edit</i></a>
+				<a ng-show="!h.app" href="/appointment/{{day+'-'+h.hour}}"><i class="material-icons">add</i></a>
 			</td>
 		</tr>
 	</table>
