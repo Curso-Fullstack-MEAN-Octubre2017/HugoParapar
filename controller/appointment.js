@@ -54,8 +54,12 @@ function getAppByDate(req,res){
 	        		  var fecha = moment(item.dateTimeI).format('YYYY-MM-DD');
 	        		  var horaI = moment(item.dateTimeI).utc().format('HH:mm');
 	        		  
-	        		  if(obj[fecha] == null ) obj[fecha] = {};
-	        		  if(obj[fecha][horaI] == null ) obj[fecha][horaI] = item ;
+	        		  if(obj[fecha] == null ){ 
+	        			  obj[fecha] = {};
+	        		  }
+	        		  if(obj[fecha][horaI] == null ){
+	        			  obj[fecha][horaI] = item ;
+	        		  }
 	        		  
 	  		          return obj;
 	  		            
