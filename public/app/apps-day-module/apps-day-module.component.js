@@ -4,7 +4,7 @@ var app= angular.module('appsDayModule', []);
 
 app.component('appsDayModule', {
         templateUrl:'/app/apps-day-module/apps-day-module.html',
-        controller: function($scope, $http, $routeParams, appsService) {
+        controller: function($scope, $http, $routeParams, $location, appsService) {
         	
         	var day = moment().startOf('day');
         	if($routeParams.day) day = moment($routeParams.day,"YYYYMMDD");
@@ -28,5 +28,9 @@ app.component('appsDayModule', {
                     });
                 }          	
             }); 
+            
+	       	$scope.abrir = (id) => {
+	       		$location.path("/appointment/"+id);
+	       	};
         }
 });

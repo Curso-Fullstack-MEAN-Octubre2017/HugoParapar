@@ -1,3 +1,35 @@
 <div>
-	<h2>Appointment {{app._id}}</h2>
+	<form class="col s12 m6 l6 marginTop2" name="miForm">
+		<fieldset>
+	    <legend>Detalle de la cita</legend>
+			<div class="input-field col s6">
+		      <input type="text" class="timepicker" id="dateTimeI" ng-model="app.dateTimeI">
+		      <label class="active" for="dateTimeI">Hora Inicio</label>
+			</div>
+			<div class="input-field col s6">
+		      <input type="text" class="timepicker" id="dateTimeF" ng-model="app.dateTimeF">
+		       <label class="active" for="dateTimeF">Hora Fin</label>
+			</div>
+		
+<!--  -->
+	 		<div class="input-field col s12">
+				<textarea id="note" class="materialize-textarea" ng-model="app.note"></textarea>
+         		<label for="note" class='active'>Nota:</label>
+			</div> 
+	
+	
+			<button data-ng-click="cancelar(miForm)" class="btn btn-default red lighten-1 right">Cancelar</button>
+			<button data-ng-click="submit(miForm)" class="btn btn-default">Guardar</button>
+		</fieldset>
+	</form>
 </div>
+
+
+
+<script src="/app/js/horas.js"></script>
+<script>
+
+$(document).ready(function() {
+  $('select').material_select();
+});
+</script>

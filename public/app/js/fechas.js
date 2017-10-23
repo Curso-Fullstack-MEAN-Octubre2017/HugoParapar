@@ -11,4 +11,4 @@ $('.datepicker').pickadate({
     close: 'SELECCIONAR',
     closeOnSelect: false,
     format: 'dd mmm yyyy'
-  });
+});

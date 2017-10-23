@@ -9,7 +9,8 @@ const appointmentSchema = Schema({
 	dateTimeF: {type: Date, required: true},
 	petId: {type: String, required: true},
 	vetId: {type: String},
-	status: {type: Number, default: 0} 
+	status: {type: Number, default: 0},
+	note: {type: String}
 });
 
 module.exports = mongoose.model("Appointments", appointmentSchema);
