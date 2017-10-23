@@ -6,7 +6,7 @@ function postCustomer(req,res){
 		customer.save((err,customerStored) =>{
 			if(err) return res.status(500).send({message: "Error al guardar el cliente"});
 			if(!customerStored) return res.status(404).send({message: "No se registro el cliente"});
-			res.status(200).send({customer: customerStored});	
+			res.json(customerStored);	
 		});
 }
 
@@ -15,14 +15,14 @@ function getCustomers(req,res){
 			.select('lastName firstName dni')
 			.exec(function (err,customers) {
 				if(err) return res.status(500).send({message: "Error"});
-				res.send(200, customers);			
+				res.json(customers);			
 	});	
 }
        
 function getCustomerById(req,res){
 	Customer.findById(req.params.id, (err,customer) =>{
 		if(err) return res.status(500).send({message: "Error"});
-		res.send(200, customer);			
+		res.json(customer);			
 	});
 }
 
@@ -30,7 +30,7 @@ function updateCustomer(req,res){
 	Customer.findByIdAndUpdate(req.params.id, req.body, (err,customerUpdate) =>{
 		if(err)res.status(500).send({message: "Error al actualizar el cliente"});
 		if(!customerUpdate)res.status(404).send({message: "No se puede actualizar el cliente"});
-		res.send(200, customerUpdate);			
+		res.json(customerUpdate);			
 	});
 }
 
