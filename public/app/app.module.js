@@ -6,6 +6,7 @@ angular.module('petStore', [
     'customerModule',
     'customerDetailModule',
     'petDetailModule',
+    'appsService',
     'appointmentModule',
     'appsDayModule'
 ]);

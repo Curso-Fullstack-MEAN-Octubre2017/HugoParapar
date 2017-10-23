@@ -41,9 +41,6 @@ function getAppByDate(req,res){
 	var dateStart = moment(req.params.fromdate,"YYYYMMDD");
 	var dateEnd = moment( req.params.todate,"YYYYMMDD");
 
-	//,{"status": {$gte:0}}
-	//{dateTimeI: { $gte: dateStart,$lte: dateEnd }}
-	
 	App.find({dateTimeI:{$gte:dateStart,$lt: dateEnd},status:{$gt:-1}},(err, busqueda) => {
 	        if (err) {
 	            res.json({ success: false, message: err });

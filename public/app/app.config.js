@@ -19,10 +19,10 @@ angular.module('petStore')
             .when("/pets/:id",{
                 template: "<pet-detail-module></pet-detail-module>"
             })
-            .when("/appointments/:mes?",{
+            .when("/appointments/:month?",{
                 template: "<appointment-module></appointment-module>"
             })
-            .when("/appointments/day/:dia?",{
+            .when("/appointments/day/:day?",{
                 template: "<apps-day-module></apps-day-module>"
             })
             .otherwise({

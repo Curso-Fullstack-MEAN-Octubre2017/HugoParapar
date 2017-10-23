@@ -18,7 +18,7 @@
 			       <th title="Domingo">Domingo</th>
 				</tr>
 				<tr ng-repeat="days in dates">
-					<td ng-repeat="day in days"> <!-- ng-click="abrir(day.date)" -->
+					<td ng-repeat="day in days" ng-click="abrir(day)">
 		            	<b>{{ day.date }}</b><br> 
 		                <h5 class="center-align">{{day.contador}}</h5>
 		        	</td>

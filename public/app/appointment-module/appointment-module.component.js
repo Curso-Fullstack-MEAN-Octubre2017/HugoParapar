@@ -4,32 +4,30 @@ var app= angular.module('appointmentModule', []);
 
 app.component('appointmentModule', {
         templateUrl:'/app/appointment-module/appointment-module.html',
-        controller: function($scope, $http, $routeParams) {
+        controller: function($scope, $http, $routeParams, $location, appsService) {
         	
-        	var mes = moment().startOf('month');
+        	var month = moment().startOf('month');
 
-        	if($routeParams.mes){
-        		mes = moment($routeParams.mes,"YYYYMM");
+        	if($routeParams.month){
+        		month = moment($routeParams.month,"YYYYMM");
         	}
         	
-        	$scope.m = mes.toDate();
-        	$scope.p = moment(mes).add(-1,'M').format("YYYYMM");
-        	$scope.n = moment(mes).add(1,'M').format("YYYYMM");
-        	var mesI =  moment(mes.toDate()).format("YYYYMM");
-        	var mesF = moment(mes).add(1,'M').toDate();
+        	$scope.m = month.toDate();
+        	$scope.p = moment(month).add(-1,'M').format("YYYYMM");
+        	$scope.n = moment(month).add(1,'M').format("YYYYMM");
+        	var monthF = moment(month).add(1,'M').toDate();
         	
         	$scope.cells = []
         	
-        	var rellenar = mes.weekday();
+        	var rellenar = month.weekday();
         	for (var i=0; i < rellenar ; i++){
         		$scope.cells.push({});
         	}
-        	
-        	$http.get("api/appointments/"+mesI+"/"+$scope.n).then(function(res){
+     
+        	appsService.getMonthApps(month).then(function(res){
+        		$scope.app = res;
         		
-        		$scope.app = res.data;
-        		
-        		for(var m = moment(mes); m.isBefore(mesF); m.add(1,'days')){
+        		for(var m = moment(month); m.isBefore(monthF); m.add(1,'days')){
         			
         			var formatoDia = m.format("D");
         			var formatoLargo = m.format("YYYY-MM-DD");
@@ -49,6 +47,12 @@ app.component('appointmentModule', {
                 }
              
                 return $scope.dates = dates;
-          	});	
+          	});
+        	
+        	 $scope.abrir = (date) => {
+        		 console.log("abrir citas-dia"+date);
+                 $location.path("/appointments/day/" + moment(date).format('YYYYMMDD'))
+        	 };
+        	
         }
 });
