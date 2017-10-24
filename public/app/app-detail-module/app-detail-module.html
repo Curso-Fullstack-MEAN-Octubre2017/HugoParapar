@@ -1,35 +1,83 @@
 <div>
-	<form class="col s12 m6 l6 marginTop2" name="miForm">
+<!-- Datos de la cita -->
+	<form class="col s12 m12 l12 marginTop2" name="miForm">
 		<fieldset>
 	    <legend>Detalle de la cita</legend>
 			<div class="input-field col s6">
-		      <input type="text" class="timepicker" id="dateTimeI" ng-model="app.dateTimeI">
-		      <label class="active" for="dateTimeI">Hora Inicio</label>
-			</div>
-			<div class="input-field col s6">
-		      <input type="text" class="timepicker" id="dateTimeF" ng-model="app.dateTimeF">
-		       <label class="active" for="dateTimeF">Hora Fin</label>
-			</div>
-		
-<!--  -->
-	 		<div class="input-field col s12">
-				<textarea id="note" class="materialize-textarea" ng-model="app.note"></textarea>
-         		<label for="note" class='active'>Nota:</label>
+				<div class="input-field col s6">
+			    	Hora Inicio<input type="text" id="dateTimeI" ng-model="horaI" disabled>
+				</div>
+				<div class="input-field col s6">
+					Hora Fin<input type="text" id="dateTimeF" ng-model="horaF" disabled>
+				</div>
+		 		<div class="input-field col s12">
+					<textarea id="note" class="materialize-textarea" ng-model="note" disabled></textarea>
+	         		<label for="note" class='active'>Nota:</label>
+				</div> 
 			</div> 
-	
-	
-			<button data-ng-click="cancelar(miForm)" class="btn btn-default red lighten-1 right">Cancelar</button>
-			<button data-ng-click="submit(miForm)" class="btn btn-default">Guardar</button>
+			<div class="input-field col s6 center-align">
+				<img id="photoURL" ng-src="img/{{pet.photoURL}}" class="circle"/>
+			</div> 
+			<div class="input-field col s12 center-align">
+				<button data-ng-click="guardar(miForm)" class="btn btn-default left">Guardar cambios</button>
+				<button data-ng-click="atender(miForm)" class="btn btn-large blue">Atender</button>
+				<button data-ng-click="cancelar(miForm)" class="btn btn-default red lighten-1 right">Cancelar cita</button>
+			</div>
 		</fieldset>
 	</form>
+<!-- Datos de la mascota -->
+	<div>
+		<form class="col s12 m6 l6 marginTop2" name="miForm">
+		 	<fieldset>
+			    <legend>Datos de la mascota</legend>
+				<div class="input-field col s6">
+					<input disabled type="text" id="name" class="validate" ng-model="pet.name">
+				</div>
+				<div class="input-field col s6">
+					<input disabled type="text" id="birthDate" class="datepicker" ng-model="pet.birthDate">
+				</div> 
+				<div class="input-field col s12">
+					<input disabled type="text" id="chipNumber" class="validate" ng-model="pet.chipNumber">
+				</div>
+				<div class="input-field col s6">
+					<input disabled type="text" id="species" class="validate" ng-model="pet.species">
+				</div>
+				<div class="input-field col s6">
+					<input disabled type="text" id="race" class="validate" ng-model="pet.race">
+				</div>
+				<div class="input-field col s12">
+					<textarea disabled id="description" class="materialize-textarea" ng-model="pet.description"></textarea>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	<div>
+		<form class="col s12 m6 l6 marginTop2" name="miForm">
+		 	<fieldset>
+		    <legend>Datos del cliente</legend>
+			<div class="input-field col s3">
+				<input disabled type="text" id="firstName" class="validate" ng-model="pet.customerId.firstName">
+			</div>
+			<div class="input-field col s6">
+				<input disabled type="text" id="lastName" class="validate" ng-model="pet.customerId.lastName">
+			</div>
+			<div class="input-field col s3">
+				<input disabled type="text" id="dni" class="validate" ng-model="pet.customerId.dni">
+			</div> 
+			<div class="input-field col s5">
+				<input disabled type="text" id="phoneNumber" class="validate" ng-model="pet.customerId.phoneNumber">
+			</div>
+			<div class="input-field col s7">
+				<input disabled type="text" id="email" class="validate" ng-model="pet.customerId.email">
+			</div>
+			<div class="input-field col s12">
+				<textarea disabled id="note" class="materialize-textarea" ng-model="pet.customerId.note"></textarea>
+			</div> 
+			</fieldset>
+		</form>
+	</div>
 </div>
 
-
-
-<script src="/app/js/horas.js"></script>
-<script>
-
-$(document).ready(function() {
-  $('select').material_select();
-});
-</script>
+<style>
+#photoURL{max-height: 200px;}
+</style>

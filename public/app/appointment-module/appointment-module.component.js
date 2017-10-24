@@ -50,7 +50,6 @@ app.component('appointmentModule', {
           	});
         	
         	 $scope.abrir = (date) => {
-        		 console.log("abrir citas-dia"+date);
                  $location.path("/appointments/day/" + moment(date).format('YYYYMMDD'))
         	 };
         	

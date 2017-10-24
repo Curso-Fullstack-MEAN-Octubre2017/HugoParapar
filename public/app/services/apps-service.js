@@ -53,7 +53,7 @@ angular.module('appsService',[]).factory('appsService', function($http, $q){
 		return promesa.promise;
 }
 	
-	//Devuelve la CITA por ID
+	//Devuelve en la CITA por ID, todos los datos de la mascota y del dueño
 	service.getAppById = (id)  => {
 		var promesa = $q.defer();
     	$http.get("/api/appointments/" + id)
@@ -65,7 +65,6 @@ angular.module('appsService',[]).factory('appsService', function($http, $q){
 			});
     	return promesa.promise;
 }
-	
 	
 	return service;
 });

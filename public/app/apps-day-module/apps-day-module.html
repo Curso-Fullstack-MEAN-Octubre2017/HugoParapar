@@ -5,11 +5,11 @@
 			<th colspan="2">Cita</th>
 		</tr>
 		<tr ng-repeat="h in listHourApps">
-			<td>{{h.hour}}</td> 
+			<td>{{h.dateTime | date: 'HH:mm'}}</td> 
 			<td><span ng-show="h.app">Nombre mascota: {{h.app.petId.name}}, Dueño: {{h.app.petId.customerId.firstName}}<span></td> 
 			<td>
-				<a ng-show="h.app" ng-click="abrir(h.app._id)"><i class="material-icons">edit</i></a>
-				<a ng-show="!h.app" ng-click="abrir(h.app._id)"><i class="material-icons">add</i></a>
+				<a ng-show="h.app" ng-href="/appointment/{{h.app._id}}"><i class="material-icons">edit</i></a>
+				<a ng-show="!h.app" ng-href="/appointment/new/{{h.dateTime | date: 'yyyyMMddHHmm'}}"><i class="material-icons">add</i></a>	
 			</td>
 		</tr>
 	</table>

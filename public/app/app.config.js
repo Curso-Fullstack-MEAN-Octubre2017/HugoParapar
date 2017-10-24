@@ -28,6 +28,9 @@ angular.module('petStore')
              .when("/appointment/:id",{ 
             	 template: "<app-detail-module></app-detail-module>" 
             })
+             .when("/appointment/new/:datetime",{ 
+            	 template: "<app-new-module></app-new-module>" 
+            })
             .otherwise({
                 template: "Other"
             });

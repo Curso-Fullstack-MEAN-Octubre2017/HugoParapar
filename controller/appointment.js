@@ -25,6 +25,13 @@ function getAppById(req,res){
 	App.findById(req.params.id, (err,app) =>{
 		if(err) return res.status(500).send({message: "Error"});
 		res.json(app);			
+	}).populate({
+        path: 'petId',
+        model: 'Pets',
+        populate: {
+            path: 'customerId',
+            model: 'Customer',
+        }
 	});
 }
 
