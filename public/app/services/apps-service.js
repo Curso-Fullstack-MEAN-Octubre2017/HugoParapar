@@ -40,12 +40,14 @@ angular.module('appsService',[]).factory('appsService', function($http, $q){
 				
 		//Si tenemos los datos los devuelve
 		if(service._appsMapByMonth[monthKey]) {
+			console.log("Datos de cache");
 			promesa.resolve(service._appsMapByMonth[monthKey][dateKey]);
 			return promesa.promise;
 		}
 		//sino los consulta
 		service.getMonthApps(month).then(
 			function() {
+				console.log("Datos de consulta");
 				promesa.resolve(service._appsMapByMonth[monthKey][dateKey]);
 			},function(err) {
 				promesa.reject(err)
@@ -65,6 +67,21 @@ angular.module('appsService',[]).factory('appsService', function($http, $q){
 			});
     	return promesa.promise;
 }
+	
+	//Crear CITA
+	service.saveApp = (data)  => {
+		var promesa = $q.defer();	
+		$http.post("api/appointments/", data)
+		.success( function(app) {
+			service._appsMapByMonth = {};
+			promesa.resolve(app);
+		})
+		.error(function(err) {
+			promesa.reject(err)
+		});
+		
+		return promesa.promise;
+	}
 	
 	return service;
 });

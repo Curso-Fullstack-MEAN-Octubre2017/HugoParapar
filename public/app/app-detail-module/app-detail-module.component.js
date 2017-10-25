@@ -19,18 +19,21 @@ app.component('appDetailModule', {
             			/*
             			 * Guardar cambios cita. PUT
             			 */
+            			alert("boton desactivado");
             		}
             		
             		$scope.atender = function(f) {
             			/*
             			 * Atender cita. Status 1 (en curso)
             			 */
+            			alert("botondesactivado");
             		}          		
             		
             		$scope.cancelar = function(f) {
             			/*
             			 * Cancelar cita. Status -1 (cancelada)
             			 */
+            			alert("boton desactivado");
             		}    
             			
             	});	

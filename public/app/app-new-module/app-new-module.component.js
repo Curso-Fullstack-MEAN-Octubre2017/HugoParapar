@@ -12,26 +12,20 @@ app.component('appNewModule', {
         		$scope.app = {};
         		$scope.app.horaI = moment(date).format("HH:mm");
         		$scope.app.horaF = moment(date).add(30,'m').format("HH:mm"); 
-        		
-        /***/		
         		$scope.q = '';
         		$scope.customerList = [];
             	
-            	$scope.getData = function () {
-            	      return $filter('filter')($scope.customerList, $scope.q)
-            	}
-        		
         		$http.get('api/customers').then(function(res) {
-        			
         			$scope.customerList = res.data;
-            		
-            		console.log(res.data);
             	});
-        /***/		
+
+        		$scope.getData = function () {
+          	      return $filter('filter')($scope.customerList, $scope.q)
+        		}
+        		
         		$scope.pets = function(id) {
         			$scope.app.customerId = id;
-        			
-        			console.log(id);
+        			console.log("customerId seleccionado: "+id);
         			
         			var petsList = {};
 
@@ -40,38 +34,31 @@ app.component('appNewModule', {
                 		console.log($scope.petsList);
                 	});    
         		}
-        		
+
         		$scope.petsOnClick = function(id) {
         			$scope.app.petId = id;
-        			
-        			console.log(id);
+        			console.log("petId seleccionado: "+id);
         		}
-        		
+
         		$scope.crear = function(f) {
-   
-/********* FALLO 2 HORAS MENOS *********/ 			
-        			$scope.app.dateTimeI = date;
-            		$scope.app.dateTimeF = moment(date).add(30,'m'); 
-/**/            		
-        		
-            		
-            		var data = $scope.app;
-        			console.log("Crear cita", data);
         			
-        			
-        			/*
-        			$http.post("api/appointments/", data)
-	       		     .then(
-	       		       function(res){ 
-	       		    	   console.log("CITA CREADA!!!");
-	       		    	$scope.app = res;
-    					var day = moment($scope.app.dateTimeI).format("YYYYMMDD")
-    					return $location.path("/appointments/day/"+day);
-	       		    	}, function(err){
-	       		    		console.log("Error: "+err);
-	       		    		}
-	       		    );		
-        			*/
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/   
+/********************** FALLO 2 HORAS MENOS | Añado 2 horas a mano **********************/
+        			$scope.app.dateTimeI = moment(date).add(120,'m'); 
+            		$scope.app.dateTimeF = moment(date).add(120+30,'m'); 
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/            		
+       
+        			console.log("Crear cita (data): ", $scope.app);
+
+        			appsService.saveApp($scope.app).then(
+            				function(res) {
+            					$scope.app = res;
+            					console.log("CITA CREADA!");
+            					var day = moment($scope.app.dateTimeI).format("YYYYMMDD")
+            					$location.path("/appointments/day/"+day);
+            				}, function(err) {
+            					console.log("Error: ", err);
+            				});
         		}
         			
         		$scope.change = function() {
