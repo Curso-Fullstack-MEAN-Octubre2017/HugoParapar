@@ -10,6 +10,8 @@ var app= angular.module('customerDetailModule', []);
             
             if(id!="new"){ 
             
+            	$scope.new=true;
+            	
             //Todos los datos del cliente
             	$http.get('api/customers/'+id).then(function(res) {
             		$scope.c = res.data;
@@ -20,8 +22,8 @@ var app= angular.module('customerDetailModule', []);
             	$http.get('api/customers/'+id+'/pets/').then(function(res) {
             		$scope.petsList = res.data;						
             	});    
-            }   	
-
+            } 
+            
         	// PUT/POST   	
         	$scope.submit = function(form) {
         	
@@ -43,7 +45,7 @@ var app= angular.module('customerDetailModule', []);
               };
               
             //Ocultar añadir mascota si es un nuevo usuario
-              if(id=="new") $('.put').hide();
+            //  if(id=="new") $('.put').hide();
 
             //Crear nueva mascota a través del id del dueño
               
