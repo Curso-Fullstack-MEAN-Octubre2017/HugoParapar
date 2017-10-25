@@ -3,9 +3,6 @@ var App = require('../models/appointments.js');
 var Customer = require('../models/customers.js');
 var Pets = require('../models/pets.js');
 var moment = require('moment');
-const Q = require("q");
-
-var AppoinmentController = {}
 
 function postApp(req,res){
 	var app = new App(req.body);
@@ -16,7 +13,6 @@ function postApp(req,res){
 		});
 }
     
-
 function getApp(req,res){
 	App.find({})
 			.exec(function (err,apps) {
@@ -25,9 +21,7 @@ function getApp(req,res){
 	});	
 }
     
-
-/*prueba promesa servidor y separacion de responsabilidades */
-/*function getAppById(req,res){
+function getAppById(req,res){
 	App.findById(req.params.id, (err,app) =>{
 		if(err) return res.status(500).send({message: "Error"});
 		res.json(app);			
@@ -39,36 +33,7 @@ function getApp(req,res){
             model: 'Customer',
         }
 	});
-}*/
-/*
-AppoinmentController.getAppById = (id) => {
-	var promesa = Q.defer();
-	
-	
-	App.findById(req.params.id, (err,app) =>{
-			if (err) { 
-				console.error(err);
-				console.log("error pasando por promesa");
-				promesa.reject(err); 
-			} else { 
-				console.log("OK pasando por promesa");
-				promesa.resolve(app); 
-			} 
-		});	
-	}).populate({
-        path: 'petId',
-        model: 'Pets',
-        populate: {
-            path: 'customerId',
-            model: 'Customer',
-        }
-	});
-	
-	return promesa.promise;
 }
-*/
-/*fin prueba*/
-
 
 function updateApp(req,res){
 	App.findByIdAndUpdate(req.params.id, req.body, (err,appUpdate) =>{
@@ -117,4 +82,4 @@ function getAppByDate(req,res){
 		}).sort({ 'dateTimeI': 1 });
 }
 
-module.exports = {postApp, getApp, /*getAppById,*/ updateApp, getAppByDate};
+module.exports = {postApp, getApp, getAppById, updateApp, getAppByDate};

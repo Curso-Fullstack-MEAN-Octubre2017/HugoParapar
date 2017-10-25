@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var Customer = require('../models/customers.js');
+const Q = require("q");
+
 
 function postCustomer(req,res){
 	var customer = new Customer(req.body);
@@ -18,13 +20,23 @@ function getCustomers(req,res){
 				res.json(customers);			
 	});	
 }
-       
-function getCustomerById(req,res){
-	Customer.findById(req.params.id, (err,customer) =>{
-		if(err) return res.status(500).send({message: "Error"});
-		res.json(customer);			
+
+//Prueba promesas en el servidor
+function getCustomerById (id)  {
+	var promesa = Q.defer();
+	
+	Customer.findById(id, function(err, customer) {
+		if (err) {
+			console.error(err);
+			promesa.reject(err);
+		} else {
+			promesa.resolve(customer);
+		}
 	});
+	
+	return promesa.promise;
 }
+
 
 function updateCustomer(req,res){
 	Customer.findByIdAndUpdate(req.params.id, req.body, (err,customerUpdate) =>{

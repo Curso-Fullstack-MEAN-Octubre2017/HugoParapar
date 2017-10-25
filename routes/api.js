@@ -4,25 +4,29 @@ var PetsController = require('../controller/pets.js');
 var AppoinmentController = require('../controller/appointment.js');
 var api = express.Router();
 
-const successCallback = function(res) { return function(result) { res.json(result) }}
+/**/const Customer = require('../models/customers.js');
+
+const successCallback = function(res) { return function(result) { res.json(result) }};
 const failCallback = function(res){ return function(err) {
 	console.error(err);
-	res.sendStatus(500);
+	res.sendStatus(500);//KO (TODO: elegir un codigo mas explicito)
 }};
 
 //GET
 api.get('/customers',CustomerController.getCustomers);
-api.get('/customers/:id',CustomerController.getCustomerById);
+
+/*PRUEBA*/
+//api.get('/customers/:id',CustomerController.getCustomerById);
+api.get('/customers/:id', function(req, res) {
+	CustomerController.getCustomerById(req.params.id)
+		.then(successCallback(res),failCallback(res));
+});
+/**/
+
 api.get('/customers/:id/pets',PetsController.getPetsByCustomerId);
 api.get('/pets/:id',PetsController.getPetsById);
 api.get('/appointments',AppoinmentController.getApp);
-	/*prueba promesa servidor y separacion de responsabilidades */
-	//api.get('/appointments/:id',AppoinmentController.getAppById);
-	api.get('/appointments/:id', function(req, res) { 
-		AppoinmentController.getAppById(req.params.id)
-			.then(successCallback(res),failCallback(res)); 
-	});
-	/*fin prueba*/
+api.get('/appointments/:id',AppoinmentController.getAppById);
 api.get('/appointments/:fromdate/:todate',AppoinmentController.getAppByDate);
 
 //POST
