@@ -9,8 +9,8 @@ var app= angular.module('customerDetailModule', []);
             var id = $routeParams.id;
             
             if(id!="new"){ 
-            
-            	$scope.new=true;
+            	//Ocultar añadir mascota si es un nuevo usuario
+            	$scope.put=true;
             	
             //Todos los datos del cliente
             	$http.get('api/customers/'+id).then(function(res) {
@@ -44,11 +44,7 @@ var app= angular.module('customerDetailModule', []);
             	}	
               };
               
-            //Ocultar añadir mascota si es un nuevo usuario
-            //  if(id=="new") $('.put').hide();
-
             //Crear nueva mascota a través del id del dueño
-              
               $( "#boton").click(function() {
             	  $location.url('/pets/new?idCustomer=' + id);
             	  $scope.$apply();
