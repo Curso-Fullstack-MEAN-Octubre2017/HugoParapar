@@ -41,13 +41,10 @@ app.component('appNewModule', {
         		}
 
         		$scope.crear = function(f) {
-        			
-/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/   
-/********************** FALLO 2 HORAS MENOS | Añado 2 horas a mano **********************/
-        			$scope.app.dateTimeI = moment(date).add(120,'m'); 
-            		$scope.app.dateTimeF = moment(date).add(120+30,'m'); 
-/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/            		
-       
+        			       		
+               		$scope.app.dateTimeI = moment(date)
+            		$scope.app.dateTimeF = moment(date).add(30,'m');
+
         			console.log("Crear cita (data): ", $scope.app);
 
         			appsService.saveApp($scope.app).then(

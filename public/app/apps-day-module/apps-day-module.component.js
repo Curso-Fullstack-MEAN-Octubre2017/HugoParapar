@@ -16,8 +16,8 @@ app.component('appsDayModule', {
             
             	apps = apps || {};
             
-                var abierto = moment(day).hour(9);
-                var cerrado = moment(day).hour(21);
+                var abierto = moment(day).hour(9).utc();
+                var cerrado = moment(day).hour(21).utc();
                 for(var hour = moment(abierto); hour.isBefore(cerrado); hour.add(0.5, 'h')) {
                     $scope.listHourApps.push({
                         dateTime: hour.toDate(),
