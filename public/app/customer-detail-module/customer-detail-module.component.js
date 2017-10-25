@@ -25,15 +25,19 @@ var app= angular.module('customerDetailModule', []);
         	// PUT/POST   	
         	$scope.submit = function(form) {
         	
-        		var data = $scope.c;
+        	//Prueba Validators
+        	 const validationErrors = Validators.validateCustomer($scope.c); 
+        		if(validationErrors)return alert(JSON.stringify(validationErrors)); 
 
+        		var data = $scope.c;
+        		
         		if(id!="new"){ //put
         			$http.put("api/customers/"+id, data);
             	}else{ //post
             		$http.post("api/customers/", data)
             		     .then(
-            		       function(response){return $location.url('/customers/' + response.data.customer._id);}, 
-            		       function(response){console.log("Error: "+response);}
+            		       function(response){return $location.url('/customers/' + response.data._id);}, 
+            		       function(response){console.log("Error: "+response);/*alert(JSON.stringify(response));*/}
             		    );	
             	}	
               };

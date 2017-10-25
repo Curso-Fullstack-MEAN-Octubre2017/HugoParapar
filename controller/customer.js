@@ -1,10 +1,16 @@
 var mongoose = require('mongoose');
 var Customer = require('../models/customers.js');
 const Q = require("q");
+const Validators = require("../public/app/validation/validators.js");
 
 
 function postCustomer(req,res){
 	var customer = new Customer(req.body);
+
+/*	Prueba Validators
+ * const validationErrors = Validators.validateCustomer(customer); 
+	if(validationErrors) { return res.status(400).send(validationErrors); }*/
+	
 		customer.save((err,customerStored) =>{
 			if(err) return res.status(500).send({message: "Error al guardar el cliente"});
 			if(!customerStored) return res.status(404).send({message: "No se registro el cliente"});
