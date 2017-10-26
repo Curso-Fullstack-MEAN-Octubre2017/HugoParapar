@@ -15,9 +15,7 @@ app.component('customerModule', {
         	      return $filter('filter')($scope.customerList, $scope.q)
         	}
         	
-        	$scope.customerList = customersService.query({}, 
-        			(res) => { $('.preloader').fadeOut(); 
-        	});
+        	$scope.customerList = customersService.query({});
         	
             $scope.numberOfPages=function(){
                 return Math.ceil($scope.getData().length/$scope.pageSize);                

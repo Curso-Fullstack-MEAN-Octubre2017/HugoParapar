@@ -1,9 +1,10 @@
 'use strict';
 
-angular.module('events', []);
+angular.module('preloader', []);
 
-angular.module('events').component('events', {
-        controller: function($rootScope, $scope, $http) {
+angular.module('preloader').component('preloader', {
+	 	templateUrl:'/app/events/preloader.html',
+		controller: function($rootScope, $scope, $http) {
 
             $scope.loading = false;
             

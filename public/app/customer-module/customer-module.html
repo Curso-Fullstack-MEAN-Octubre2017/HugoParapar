@@ -9,7 +9,7 @@
 </nav>
   <ul class="collection">
   	<li class="collection-header center"><h4>Listado de clientes</h4></li>
-  	<div class="preloader progress"><div class="indeterminate"></div></div> 
+  	<preloader></preloader>
 	<li class="collection-item avatar" ng-repeat="c in customerList | filter:q | startFrom:currentPage*pageSize | limitTo:pageSize | orderBy: 'firstName'">
 		<a ng-href="customers/{{c._id}}">
 			<i class="material-icons circle">person</i><p>{{c.firstName}} {{c.lastName}} | {{c.dni}}</p><spam class="secondary-content"><i class="material-icons">fullscreen</i></spam>

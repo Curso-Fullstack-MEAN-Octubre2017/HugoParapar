@@ -8,7 +8,7 @@ angular.module('petStore', [
     'petDetailModule',
     'appsService',
     'customersService',
-    'events',
+    'preloader',
     'appointmentModule',
     'appsDayModule',
     'appDetailModule',
