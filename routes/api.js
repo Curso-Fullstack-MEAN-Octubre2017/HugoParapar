@@ -15,14 +15,13 @@ const failCallback = function(res){ return function(err) {
 //GET
 api.get('/customers',CustomerController.getCustomers);
 
-/*PRUEBA*/
-//api.get('/customers/:id',CustomerController.getCustomerById);
-api.get('/customers/:id', function(req, res) {
-	CustomerController.getCustomerById(req.params.id)
-		.then(successCallback(res),failCallback(res));
-});
-/**/
-
+/*PRUEBA PROMESAS EN SERVIDOR*/
+	//api.get('/customers/:id',CustomerController.getCustomerById);
+	api.get('/customers/:id', function(req, res) {
+		CustomerController.getCustomerById(req.params.id)
+			.then(successCallback(res),failCallback(res));
+	});
+	
 api.get('/customers/:id/pets',PetsController.getPetsByCustomerId);
 api.get('/pets/:id',PetsController.getPetsById);
 api.get('/appointments',AppoinmentController.getApp);
@@ -35,7 +34,17 @@ api.post('/pets',PetsController.postPets);
 api.post('/appointments',AppoinmentController.postApp);
 
 //PUT
-api.put('/customers/:id',CustomerController.updateCustomer);
+	/*PRUEBA OPTIMISTICLOCKING*/
+	//api.put('/customers/:id',CustomerController.updateCustomer);
+	api.put('/customers/:id', (req, res) => {
+		CustomerController.update(req.body).then(
+				function(result) { 
+					if(result == null) return res.status(412).send({message: "ConcurrentEditionException"});
+					successCallback(res)
+				}
+				,failCallback(res));
+	 });	
+
 api.put('/pets/:id',PetsController.updatePet);
 api.put('/appointments/:id',AppoinmentController.updateApp);
 

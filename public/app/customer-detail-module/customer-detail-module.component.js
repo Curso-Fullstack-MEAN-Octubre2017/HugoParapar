@@ -34,12 +34,16 @@ var app= angular.module('customerDetailModule', []);
         		var data = $scope.c;
         		
         		if(id!="new"){ //put
-        			$http.put("api/customers/"+id, data);
+        			$http.put("api/customers/"+id, data)
+        				.then(
+            		       function(response){{message: res.statusText}}, 
+            		       function(response){alert(response.data.message)}
+            		    );	
             	}else{ //post
             		$http.post("api/customers/", data)
             		     .then(
             		       function(response){return $location.url('/customers/' + response.data._id);}, 
-            		       function(response){console.log("Error: "+response);/*alert(JSON.stringify(response));*/}
+            		       function(response){console.log("Error: "+response);}
             		    );	
             	}	
               };

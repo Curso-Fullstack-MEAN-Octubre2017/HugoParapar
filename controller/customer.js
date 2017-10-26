@@ -44,12 +44,36 @@ function getCustomerById (id)  {
 }
 
 
-function updateCustomer(req,res){
+//Prueba OptimisticLocking 
+function update(json){
+	
+ 	var promesa = Q.defer();	
+ 	var v = json.__v;
+ 	delete json.__v; // evitamos el conflicto entre $set e $inc
+ 		
+ 		Customer.findOneAndUpdate(
+ 				{_id: json._id, __v: v}, // find current version
+ 				{$set: json, $inc: { __v: 1 }}, // update and increment version
+ 				{new : true}, // return inserted version
+ 		function(err, customerUpdate) {
+ 	 		console.log("Updated Customer:", customerUpdate);
+ 	 		if (err) {
+ 	 			console.error(err);
+ 	 			promesa.reject(err);
+ 	 		} else {
+ 	 			promesa.resolve(customerUpdate);
+ 	 		}
+ 	 	});	
+ 	 	
+ 	 	return promesa.promise;
+ }
+
+/*function updateCustomer(req,res){
 	Customer.findByIdAndUpdate(req.params.id, req.body, (err,customerUpdate) =>{
 		if(err)res.status(500).send({message: "Error al actualizar el cliente"});
 		if(!customerUpdate)res.status(404).send({message: "No se puede actualizar el cliente"});
 		res.json(customerUpdate);			
 	});
-}
+}*/
 
-module.exports = {postCustomer, getCustomers, getCustomerById, updateCustomer};
+module.exports = {postCustomer, getCustomers, getCustomerById, update};
