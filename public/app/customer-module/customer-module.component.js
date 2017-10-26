@@ -4,7 +4,7 @@ var app= angular.module('customerModule', []);
 
 app.component('customerModule', {
         templateUrl:'/app/customer-module/customer-module.html',
-        controller: function($scope, $http, $filter) {
+        controller: function($scope, $filter, customersService) {
         	
         	$scope.currentPage = 0;
         	$scope.pageSize = 5;
@@ -15,15 +15,13 @@ app.component('customerModule', {
         	      return $filter('filter')($scope.customerList, $scope.q)
         	}
         	
-        	$http.get('api/customers').then(function(res) {
-        		$('.preloader').fadeOut();
-        		$scope.customerList = res.data;
+        	$scope.customerList = customersService.query({}, 
+        			(res) => { $('.preloader').fadeOut(); 
         	});
-  	
+        	
             $scope.numberOfPages=function(){
                 return Math.ceil($scope.getData().length/$scope.pageSize);                
-            }
-            
+            }  
         }
     });
 

@@ -40,7 +40,7 @@ api.post('/appointments',AppoinmentController.postApp);
 		CustomerController.update(req.body).then(
 				function(result) { 
 					if(result == null) return res.status(412).send({message: "ConcurrentEditionException"});
-					successCallback(res)
+					 res.json(result); //successCallback(res);
 				}
 				,failCallback(res));
 	 });	

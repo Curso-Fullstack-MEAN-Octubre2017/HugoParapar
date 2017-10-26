@@ -18,7 +18,7 @@ app.component('appNewModule', {
         		$http.get('api/customers').then(function(res) {
         			$scope.customerList = res.data;
             	});
-
+        		
         		$scope.getData = function () {
           	      return $filter('filter')($scope.customerList, $scope.q)
         		}
