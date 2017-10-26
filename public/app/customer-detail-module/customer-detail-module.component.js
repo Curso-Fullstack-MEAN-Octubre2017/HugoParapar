@@ -25,7 +25,8 @@ var app= angular.module('customerDetailModule', []);
 
         		if(id!="new"){ //put
         			customersService.update({id: $scope.c._id}, $scope.c, 
-        					(res) => { Materialize.toast('Datos modificados correctamente', 4000); },  
+        					(res) => {  $scope.$emit("message:success", {message: "Cliente con exito"}) 
+        								Materialize.toast('Datos modificados correctamente', 4000); },  
         					(err) => { Materialize.toast('ERROR', 4000); });
             	}else{ //post
             		customersService.save({}, $scope.c, 
