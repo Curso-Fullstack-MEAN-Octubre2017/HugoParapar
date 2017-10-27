@@ -2,32 +2,17 @@
 	<form class="col s12 m6 l6 marginTop2" name="miForm">
 	 	<fieldset>
 	    <legend>Datos de la mascota</legend>
-		<div class="input-field col s6">
-			<input type="text" id="name" class="validate" ng-model="pet.name">
-			<label class="active" for="name">Nombre</label>
-		</div>
-		<div class="input-field col s6">
-			<input type="text" id="birthDate" class="datepicker" ng-model="pet.birthDate">
-			<label class="active" for="birthDate" >Cumpleaños</label>
-		</div> 
-		<div class="input-field col s12">
-			<input type="text" id="chipNumber" class="validate" ng-model="pet.chipNumber">
-			<label class="active" for="chipNumber">Número de Chip</label>
-		</div>
-		<div class="input-field col s6">
-			<input type="text" id="species" class="validate" ng-model="pet.species">
-			<label class="active" for="species">Especie</label>
-		</div>
-		<div class="input-field col s6">
-			<input type="text" id="race" class="validate" ng-model="pet.race">
-			<label class="active" for="race">Raza</label>
-		</div>
-		<div class="input-field col s12">
-			<textarea id="description" class="materialize-textarea" ng-model="pet.description"></textarea>
-         	<label for="description" class='active'>Descripción</label>
-		</div> 
-		<button data-ng-click="submit(miForm)" class="btn btn-default">Guardar</button>
-        <button data-ng-click="delete(miForm)" class="btn btn-default red lighten-1 right">Eliminar</button>
+			<label-input-form-group data-n="s6" data-model="pet.name" data-id="name" data-label="Nombre"/> 
+			<label-input-form-group data-n="s6" data-model="pet.birthDate" data-id="birthDate" data-label="CumpleaÃ±os"/>
+			<label-input-form-group data-n="s12" data-model="pet.chipNumber" data-id="chipNumber" data-label="NÃºmero de Chip"/>
+			<label-input-form-group data-n="s6" data-model="pet.species" data-id="species" data-label="Especie"/>
+			<label-input-form-group data-n="s6" data-model="pet.race" data-id="race" data-label="Raza"/>
+			<div class="input-field col s12">
+				<textarea id="description" class="materialize-textarea" ng-model="pet.description"></textarea>
+	         	<label for="description" class='active'>Descripcion</label>
+			</div> 
+			<button data-ng-click="submit(miForm)" class="btn btn-default">Guardar</button>
+	        <button data-ng-click="delete(miForm)" class="btn btn-default red lighten-1 right">Eliminar</button>
 		</fieldset>
 	</form>
 	<div class="col s12 m6 l6 marginTop2">

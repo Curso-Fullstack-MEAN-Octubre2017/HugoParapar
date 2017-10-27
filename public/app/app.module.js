@@ -3,15 +3,16 @@
 angular.module('petStore', [
     'ngResource',
     'ngRoute',
+    'directives',
+    'preloader',
     'customerModule',
     'customerDetailModule',
+    'pet',
     'petDetailModule',
-    'appsService',
-    'customersService',
-    'preloader',
     'appointmentModule',
     'appsDayModule',
     'appDetailModule',
     'appNewModule',
-    'pet'
+    'appsService',
+    'customersService'
 ]);
