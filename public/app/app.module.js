@@ -14,5 +14,6 @@ angular.module('petStore', [
     'appDetailModule',
     'appNewModule',
     'appsService',
-    'customersService'
+    'customersService',
+    'petsService'
 ]);

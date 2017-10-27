@@ -35,10 +35,6 @@ var app= angular.module('customerDetailModule', []);
             	}	
               };
               
-            //Crear nueva mascota a través del id del dueño
-              $( "#boton").click(function() {
-            	  $location.url('/pets/new?idCustomer=' + id);
-            	  $scope.$apply();
-            	});	 		
+           
         }
     });

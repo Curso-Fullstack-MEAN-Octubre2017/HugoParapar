@@ -8,8 +8,8 @@ const petsSchema = Schema({
 	birthDate: {type: Date, required: true},
 	species: {type: String, required: true},
 	race: {type: String, required: true},
-	description: {type: String, required: true},
-	photoURL: {type: String, required: true},
+	description: {type: String},
+	photoURL: {type: String},
 	customerId: {type: String, required: true}
 });
 

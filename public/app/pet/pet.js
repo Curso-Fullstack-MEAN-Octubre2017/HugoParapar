@@ -7,6 +7,7 @@ var app= angular.module('pet', []);
         controller: function($scope, $http, $routeParams, $location) {
            
         	var id = $routeParams.id;
+        	$scope.id = id;
         	$scope.petsList = [];
         	
         	$http.get('api/customers/'+id+'/pets/').then(function(res) {
