@@ -6,7 +6,8 @@
 		</tr>
 		<tr ng-repeat="h in listHourApps">
 			<td>{{h.dateTime | date: 'HH:mm'}}</td> 
-			<td><span ng-show="h.app">Nombre mascota: {{h.app.petId.name}}, Dueño: {{h.app.petId.customerId.firstName}}<span></td> 
+			<td><span ng-show="h.app"><i class="material-icons circle">pets</i>{{h.app.petId.name}}
+			<i class="material-icons circle">person</i>{{h.app.petId.customerId.firstName}}</span></td> 
 			<td>
 				<a ng-show="h.app" ng-href="/appointment/{{h.app._id}}"><i class="material-icons">edit</i></a>
 				<a ng-show="!h.app" ng-href="/appointment/new/{{h.dateTime | date: 'yyyyMMddHHmm'}}"><i class="material-icons">add</i></a>	

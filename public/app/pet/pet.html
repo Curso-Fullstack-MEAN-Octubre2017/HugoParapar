@@ -1,13 +1,11 @@
 <div class="col s12 m6 l6 marginTop2">
-		<!-- ng-show="put"  -->
-		<ul class="collection">
-			<li class="collection-item avatar" ng-repeat="p in petsList | orderBy: 'name'">
-				<a ng-href="pets/{{p._id}}">
-					<i class="material-icons circle">pets</i><img src="img/{{p.photoURL}}" class="circle"/><p>{{p.name}}</p><spam class="secondary-content"><i class="material-icons">fullscreen</i></spam>
-				</a>
-			</li>
-	  	</ul>
-		<a class="btn-floating waves-effect waves-light teal darken-4 right" role="button" id="boton" ng-href="/pets/new?idCustomer={{id}}">
-		<i class="material-icons">add</i></a>
-		
-	</div>
+	<ul class="collection">
+		<li class="collection-item avatar" ng-repeat="p in petsList | orderBy: 'name'">
+			<a ng-href="pets/{{p._id}}">
+				<i class="material-icons circle">pets</i><img src="img/{{p.photoURL}}" class="circle"/><p>{{p.name}}</p><spam class="secondary-content"><i class="material-icons">fullscreen</i></spam>
+			</a>
+		</li>
+  	</ul>
+	<a class="btn-floating waves-effect waves-light teal darken-4 right" role="button" id="boton" ng-href="/pets/new?idCustomer={{id}}">
+	<i class="material-icons">add</i></a>
+</div>

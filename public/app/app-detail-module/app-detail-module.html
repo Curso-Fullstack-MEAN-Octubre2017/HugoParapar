@@ -30,21 +30,11 @@
 		<form class="col s12 m6 l6 marginTop2" name="miForm">
 		 	<fieldset>
 			    <legend>Datos de la mascota</legend>
-				<div class="input-field col s6">
-					<input disabled type="text" id="name" class="validate" ng-model="pet.name">
-				</div>
-				<div class="input-field col s6">
-					<input disabled type="text" id="birthDate" class="datepicker" ng-model="pet.birthDate">
-				</div> 
-				<div class="input-field col s12">
-					<input disabled type="text" id="chipNumber" class="validate" ng-model="pet.chipNumber">
-				</div>
-				<div class="input-field col s6">
-					<input disabled type="text" id="species" class="validate" ng-model="pet.species">
-				</div>
-				<div class="input-field col s6">
-					<input disabled type="text" id="race" class="validate" ng-model="pet.race">
-				</div>
+				<label-input-form-group data-n="s6" data-model="pet.name" data-id="name" data-label="Nombre" data-disabled="true"/> 
+				<date-picker data-n="s6" data-model="pet.birthDate" data-id="birthDate" data-label="Cumpleaños" data-disabled="true"/>
+				<label-input-form-group data-n="s12" data-model="pet.chipNumber" data-id="chipNumber" data-label="Número de Chip" data-disabled="true"/>
+				<label-input-form-group data-n="s6" data-model="pet.species" data-id="species" data-label="Especie" data-disabled="true"/>
+				<label-input-form-group data-n="s6" data-model="pet.race" data-id="race" data-label="Raza" data-disabled="true"/>
 				<div class="input-field col s12">
 					<textarea disabled id="description" class="materialize-textarea" ng-model="pet.description"></textarea>
 				</div>
@@ -55,21 +45,11 @@
 		<form class="col s12 m6 l6 marginTop2" name="miForm">
 		 	<fieldset>
 		    <legend>Datos del cliente</legend>
-			<div class="input-field col s3">
-				<input disabled type="text" id="firstName" class="validate" ng-model="pet.customerId.firstName">
-			</div>
-			<div class="input-field col s6">
-				<input disabled type="text" id="lastName" class="validate" ng-model="pet.customerId.lastName">
-			</div>
-			<div class="input-field col s3">
-				<input disabled type="text" id="dni" class="validate" ng-model="pet.customerId.dni">
-			</div> 
-			<div class="input-field col s5">
-				<input disabled type="text" id="phoneNumber" class="validate" ng-model="pet.customerId.phoneNumber">
-			</div>
-			<div class="input-field col s7">
-				<input disabled type="text" id="email" class="validate" ng-model="pet.customerId.email">
-			</div>
+			<label-input-form-group data-n="s3" data-model="pet.customerId.firstName" data-id="firstName" data-label="Nombre" data-disabled="true"/> 
+			<label-input-form-group data-n="s6" data-model="pet.customerId.lastName" data-id="lastName" data-label="Apellidos" data-disabled="true"/> 
+			<label-input-form-group data-n="s3" data-model="pet.customerId.dni" data-id="dni" data-label="DNI" data-disabled="true"/> 
+			<label-input-form-group data-n="s5" data-model="pet.customerId.phoneNumber" data-id="phoneNumber" data-label="Teléfono" data-disabled="true"/> 
+			<label-input-form-group data-n="s7" data-model="pet.customerId.email" data-id="email" data-label="E-mail" data-disabled="true"/> 
 			<div class="input-field col s12">
 				<textarea disabled id="note" class="materialize-textarea" ng-model="pet.customerId.note"></textarea>
 			</div> 
