@@ -14,13 +14,13 @@
 			  		<legend>Seleccionar cliente</legend>
 						<form>
 					      <div class="input-field">
-							<i class="material-icons">search</i><input ng-model="q" ng-change="change()" id="search" type="search" placeholder="Filtra por: Nombre, apellido o DNI" autocomplete="off">
-					        <label class="label-icon" for="search"></label><i class="material-icons">close</i>
+							<i class="material-icons" ng-show="!app.customerId">search</i><input ng-model="q" ng-change="change()" id="search" type="search" placeholder="Filtra por: Nombre, apellido o DNI" autocomplete="off">
+					        <label class="label-icon" for="search"></label><i class="material-icons" ng-show="!app.customerId">close</i>
 					      </div> 
 					 	</form>
-					 <ul ng-if="hide" class="collection">
+					 <ul ng-if="hide" ng-show="!app.customerId" class="collection">
 						<li class="collection-item avatar" ng-repeat="c in customerList | filter:q | startFrom:currentPage*pageSize | limitTo:pageSize | orderBy: 'firstName'">
-							<div ng-click="pets(c._id)">
+							<div ng-click="pets(c)">
 							<p>{{c.firstName}} {{c.lastName}} | {{c.dni}}</p>
 							</div>
 						</li>

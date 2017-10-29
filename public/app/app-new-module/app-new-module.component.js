@@ -12,22 +12,19 @@ app.component('appNewModule', {
         		$scope.app = {};
         		$scope.app.horaI = moment(date).format("HH:mm");
         		$scope.app.horaF = moment(date).add(30,'m').format("HH:mm"); 
-        		//$scope.q = '';
         		$scope.customerList = customersService.query({});
         		
         		$scope.getData = function () {
-          	      return $filter('filter')($scope.customerList, $scope.q)
+          	       return $filter('filter')($scope.customerList, $scope.q)
         		}
         		
-        		$scope.pets = function(id) {
-        			$scope.app.customerId = id;
-        			console.log("customerId seleccionado: "+id);
-        			
+        		$scope.pets = function(c) {
+        			var customerId = c._id; 
+        			$scope.app.customerId = customerId;
+        			$scope.q = c.firstName+" "+c.lastName+" | "+c.dni;
         			var petsList = {};
-
-                	$http.get('api/customers/'+id+'/pets/').then(function(res) {
+                	$http.get('api/customers/'+customerId+'/pets/').then(function(res) {
                 		$scope.petsList = res.data;		
-                		console.log($scope.petsList);
                 	});
         		}
 
@@ -37,21 +34,21 @@ app.component('appNewModule', {
         		}
 
         		$scope.crear = function(f) {
-        			       		
-               		$scope.app.dateTimeI = moment(date)
-            		$scope.app.dateTimeF = moment(date).add(30,'m');
-
-        			console.log("Crear cita (data): ", $scope.app);
-
-        			appsService.saveApp($scope.app).then(
-            				function(res) {
-            					$scope.app = res;
-            					console.log("CITA CREADA!");
-            					var day = moment($scope.app.dateTimeI).format("YYYYMMDD")
-            					$location.path("/appointments/day/"+day);
-            				}, function(err) {
-            					console.log("Error: ", err);
-            				});
+        			if($scope.app.customerId == null || $scope.app.petId==null){
+        				 Materialize.toast('Seleccione una mascota antes de crear la cita', 2500)
+        			}else{
+	               		$scope.app.dateTimeI = moment(date)
+	            		$scope.app.dateTimeF = moment(date).add(30,'m');
+	        			appsService.saveApp($scope.app).then(
+	            				function(res) {
+	            					$scope.app = res;
+	            					console.log("CITA CREADA!");
+	            					var day = moment($scope.app.dateTimeI).format("YYYYMMDD")
+	            					$location.path("/appointments/day/"+day);
+	            				}, function(err) {
+	            					console.log("Error: ", err);
+	            				});
+        			}	
         		}
         			
         		$scope.change = function() {
@@ -61,6 +58,11 @@ app.component('appNewModule', {
         				$scope.hide = false;
         			}
         		}
+        		
+        		$scope.clear = function () {
+        			$scope.q = "";
+        			/**/
+         		}
         		
         		$scope.volver = function() {
         			history.back();
