@@ -4,7 +4,7 @@ var app= angular.module('appNewModule', []);
 
 app.component('appNewModule', {
         templateUrl:'/app/app-new-module/app-new-module.html',
-        controller: function($scope, $http, $routeParams, $filter, $location, appsService) {
+        controller: function($scope, $http, $routeParams, $filter, $location, appsService, customersService) {
         	  
         	if($routeParams.datetime) {
         		
@@ -12,12 +12,8 @@ app.component('appNewModule', {
         		$scope.app = {};
         		$scope.app.horaI = moment(date).format("HH:mm");
         		$scope.app.horaF = moment(date).add(30,'m').format("HH:mm"); 
-        		$scope.q = '';
-        		$scope.customerList = [];
-            	
-        		$http.get('api/customers').then(function(res) {
-        			$scope.customerList = res.data;
-            	});
+        		//$scope.q = '';
+        		$scope.customerList = customersService.query({});
         		
         		$scope.getData = function () {
           	      return $filter('filter')($scope.customerList, $scope.q)
@@ -32,7 +28,7 @@ app.component('appNewModule', {
                 	$http.get('api/customers/'+id+'/pets/').then(function(res) {
                 		$scope.petsList = res.data;		
                 		console.log($scope.petsList);
-                	});    
+                	});
         		}
 
         		$scope.petsOnClick = function(id) {

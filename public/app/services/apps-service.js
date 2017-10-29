@@ -79,9 +79,21 @@ angular.module('appsService',[]).factory('appsService', function($http, $q){
 		.error(function(err) {
 			promesa.reject(err)
 		});
-		
 		return promesa.promise;
 	}
+		
+	service.updateApp = (id, data)  => {
+		var promesa = $q.defer();	
+		$http.put("api/appointments/"+id, data).then(
+				function(app) {
+					service._appsMapByMonth = {};
+					promesa.resolve(app);
+				}, function(err) {
+					promesa.reject(err)
+				});
+		return promesa.promise;
+	}
+	
 	
 	return service;
 });

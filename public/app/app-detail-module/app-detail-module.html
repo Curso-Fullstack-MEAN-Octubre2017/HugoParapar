@@ -11,7 +11,7 @@
 					Hora Fin<input type="text" id="dateTimeF" ng-model="horaF" disabled>
 				</div>
 		 		<div class="input-field col s12">
-					<textarea id="note" class="materialize-textarea" ng-model="note" disabled></textarea>
+					<textarea id="note" class="materialize-textarea" ng-model="note"></textarea>
 	         		<label for="note" class='active'>Nota:</label>
 				</div> 
 			</div> 
@@ -19,9 +19,9 @@
 				<img id="photoURL" ng-src="img/{{pet.photoURL}}" class="circle"/>
 			</div> 
 			<div class="input-field col s12 center-align">
-				<button data-ng-click="guardar(miForm)" class="btn btn-default left">Guardar cambios</button>
-				<button data-ng-click="atender(miForm)" class="btn btn-large blue">Atender</button>
-				<button data-ng-click="cancelar(miForm)" class="btn btn-default red lighten-1 right">Cancelar cita</button>
+				<button data-ng-click="guardar()" class="btn btn-default left">Guardar cambios</button>
+				<button data-ng-click="atender()" class="btn btn-large blue">Atender</button>
+				<button data-ng-click="cancelar()" class="btn btn-default red lighten-1 right">Cancelar cita</button>
 			</div>
 		</fieldset>
 	</form>
@@ -31,8 +31,8 @@
 		 	<fieldset>
 			    <legend>Datos de la mascota</legend>
 				<label-input-form-group data-n="s6" data-model="pet.name" data-id="name" data-label="Nombre" data-disabled="true"/> 
-				<date-picker data-n="s6" data-model="pet.birthDate" data-id="birthDate" data-label="Cumpleaños" data-disabled="true"/>
-				<label-input-form-group data-n="s12" data-model="pet.chipNumber" data-id="chipNumber" data-label="Número de Chip" data-disabled="true"/>
+				<date-picker data-n="s6" data-model="pet.birthDate" data-id="birthDate" data-label="CumpleaÃ±os" data-disabled="true"/>
+				<label-input-form-group data-n="s12" data-model="pet.chipNumber" data-id="chipNumber" data-label="NÃºmero de Chip" data-disabled="true"/>
 				<label-input-form-group data-n="s6" data-model="pet.species" data-id="species" data-label="Especie" data-disabled="true"/>
 				<label-input-form-group data-n="s6" data-model="pet.race" data-id="race" data-label="Raza" data-disabled="true"/>
 				<div class="input-field col s12">
@@ -48,7 +48,7 @@
 			<label-input-form-group data-n="s3" data-model="pet.customerId.firstName" data-id="firstName" data-label="Nombre" data-disabled="true"/> 
 			<label-input-form-group data-n="s6" data-model="pet.customerId.lastName" data-id="lastName" data-label="Apellidos" data-disabled="true"/> 
 			<label-input-form-group data-n="s3" data-model="pet.customerId.dni" data-id="dni" data-label="DNI" data-disabled="true"/> 
-			<label-input-form-group data-n="s5" data-model="pet.customerId.phoneNumber" data-id="phoneNumber" data-label="Teléfono" data-disabled="true"/> 
+			<label-input-form-group data-n="s5" data-model="pet.customerId.phoneNumber" data-id="phoneNumber" data-label="TelÃ©fono" data-disabled="true"/> 
 			<label-input-form-group data-n="s7" data-model="pet.customerId.email" data-id="email" data-label="E-mail" data-disabled="true"/> 
 			<div class="input-field col s12">
 				<textarea disabled id="note" class="materialize-textarea" ng-model="pet.customerId.note"></textarea>
