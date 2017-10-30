@@ -10,6 +10,7 @@ angular.module('petStore', [
     'pet',
     'petDetailModule',
     'appointmentModule',
+    'appointments',
     'appsDayModule',
     'appDetailModule',
     'appNewModule',

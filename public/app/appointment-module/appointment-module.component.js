@@ -4,15 +4,12 @@ var app= angular.module('appointmentModule', []);
 
 app.component('appointmentModule', {
         templateUrl:'/app/appointment-module/appointment-module.html',
-        controller: function($scope, $http, $routeParams, $location, appsService) {
+        controller: function($scope, $routeParams, $location, appsService) {
         	
         	var month = moment().startOf('month');
-
-        	if($routeParams.month){
-        		month = moment($routeParams.month,"YYYYMM");
-        	}
+        	if($routeParams.month) month = moment($routeParams.month,"YYYYMM");
         	
-        	$scope.m = month.toDate();
+        	$scope.m = moment(month.toDate()).format("MMMM YYYY").toUpperCase();
         	$scope.p = moment(month).add(-1,'M').format("YYYYMM");
         	$scope.n = moment(month).add(1,'M').format("YYYYMM");
         	var monthF = moment(month).add(1,'M').toDate();

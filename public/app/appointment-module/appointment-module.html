@@ -1,8 +1,8 @@
 <section>
 	<nav class="nav">
-		<div class="prev"><a href="appointments/{{p}}"><i class="material-icons">chevron_left</i></a> </div>
-		<div class="current">{{m | date:'MMMM yyyy'}}</div>
-		<div class="next"><a href="appointments/{{n}}"><i class="material-icons">chevron_right</i></a> </div>
+		<div class="prev"><a href="appointments/{{p}}"><i class="material-icons">chevron_left</i></a></div>
+		<div class="current">{{m}}</div>
+		<div class="next"><a href="appointments/{{n}}"><i class="material-icons">chevron_right</i></a></div>
 	</nav>
 	<preloader></preloader>
 	<!-- <calendar></calendar> -->
@@ -33,4 +33,5 @@
 .nav{display:flex}
 th{text-align: center;}
 td, th {border: 1px #ccc solid;}
+nav > div {margin:auto;}
 </style>

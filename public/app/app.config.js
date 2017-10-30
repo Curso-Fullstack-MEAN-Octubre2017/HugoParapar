@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('petStore')
-    .factory('loadingInterceptor', function($rootScope) {
+    .factory('loadingInterceptor', function($rootScope, $q) {
 		var interceptor = {
 			'request': function(config) {
 				$rootScope.$broadcast("http:request", config);
@@ -13,11 +13,11 @@ angular.module('petStore')
 			},
 			'requestError': function(rejection) {
 				$rootScope.$broadcast("http:requestError", rejection);
-				return rejection;
+				return $q.reject(rejection);
 			},
 			'responseError': function(rejection) {
 				$rootScope.$broadcast("http:responseError", rejection);
-				return rejection;
+				return $q.reject(rejection);
 			}
 		};
 		return interceptor;
@@ -46,7 +46,7 @@ angular.module('petStore')
                 template: "<appointment-module></appointment-module>"
             })
             .when("/appointments/day/:day?",{
-                template: "<apps-day-module></apps-day-module>"
+                template: "<appointments></appointments>" /* <apps-day-module></apps-day-module> */
             })
              .when("/appointment/:id",{ 
             	 template: "<app-detail-module></app-detail-module>" 
