@@ -1,9 +1,9 @@
 'use strict';
 
-var app= angular.module('pet', []);
+var app= angular.module('petModule', []);
 
-    app.component('pet', {
-        templateUrl:'/app/pet/pet.html',
+    app.component('petModule', {
+        templateUrl:'/app/pet-module/pet-module.html',
         controller: function($scope, $http, $routeParams, $location) {
            
         	var id = $routeParams.id;

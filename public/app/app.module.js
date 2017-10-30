@@ -7,14 +7,14 @@ angular.module('petStore', [
     'preloader',
     'customerModule',
     'customerDetailModule',
-    'pet',
+    'customersService',
+    'petModule',
     'petDetailModule',
-    'appointmentModule',
-    'appointments',
+    'petsService',
+    'calendarModule',
+    'appointmentsModule',
     'appsDayModule',
     'appDetailModule',
     'appNewModule',
-    'appsService',
-    'customersService',
-    'petsService'
+    'appsService'
 ]);

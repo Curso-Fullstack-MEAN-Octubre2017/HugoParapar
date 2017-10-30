@@ -43,17 +43,11 @@ angular.module('petStore')
                 template: "<pet-detail-module></pet-detail-module>"
             })
             .when("/appointments/:month?",{
-                template: "<appointment-module></appointment-module>"
+                template: "<calendar-module></calendar-module>"
             })
             .when("/appointments/day/:day?",{
-                template: "<appointments></appointments>" /* <apps-day-module></apps-day-module> */
-            })
-             .when("/appointment/:id",{ 
-            	 template: "<app-detail-module></app-detail-module>" 
-            })
-             .when("/appointment/new/:datetime",{ 
-            	 template: "<app-new-module></app-new-module>" 
-            })
+                template: "<appointments-module></appointments-module>"
+            }) 
             .otherwise({
                 template: "Other"
             });

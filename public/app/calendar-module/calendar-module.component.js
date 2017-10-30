@@ -1,9 +1,9 @@
 'use strict'
 
-var app= angular.module('appointmentModule', []);
+var app= angular.module('calendarModule', []);
 
-app.component('appointmentModule', {
-        templateUrl:'/app/appointment-module/appointment-module.html',
+app.component('calendarModule', {
+        templateUrl:'/app/calendar-module/calendar-module.html',
         controller: function($scope, $routeParams, $location, appsService) {
         	
         	var month = moment().startOf('month');

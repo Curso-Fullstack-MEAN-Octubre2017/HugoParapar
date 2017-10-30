@@ -1,9 +1,9 @@
 'use strict'
 
-var app= angular.module('appointments', []);
+var app= angular.module('appointmentsModule', []);
 
-app.component('appointments', {
-        templateUrl:'/app/appointments/appointments.html',
+app.component('appointmentsModule', {
+        templateUrl:'/app/appointments/appointments-module.html',
         controller: function($scope, $routeParams, $location) {
         
     		var day = moment().startOf('day');
@@ -15,22 +15,21 @@ app.component('appointments', {
         	$scope.$on("appointments:showAppClick", (event,id) =>{
         		$scope.edit = true;
         		$scope.crear = false;
-        		$scope.$broadcast("appointments:showApp",id);
+        		$scope.$broadcast("appointments:showApp", id);
         	});
         	
         	$scope.$on("appointment:crearAppNewClick", (event,datetime) =>{
         		$scope.crear = true;
         		$scope.edit = false;
-        		$scope.$broadcast("appointment:crearAppNew",datetime);
+        		$scope.$broadcast("appointment:crearAppNew", datetime);
         	});
         	
-        	$scope.$on("appointments:appSaved", (event, app) =>{
-        		/**/
-        		//$scope.$broadcast("appointments:addAppointment", data); 
-        	});
-        	
-        	$scope.$on("appointments:appDeleted", (event) =>{
-        		$scope.$broadcast("appointments:loadAppointment", day);
-        	});
+        	$scope.$on("appointment:appSaved", (event, datetime) => {
+                $scope.$broadcast("appointments:loadAppointments", datetime);
+            });
+            
+            /*$scope.$on("appointment:appDeleted", (event) => {
+                $scope.$broadcast("appointments:loadAppointments");
+            });*/
         }
 });

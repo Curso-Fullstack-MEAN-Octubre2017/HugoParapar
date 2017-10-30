@@ -4,7 +4,7 @@ var app= angular.module('appDetailModule', []);
 
 app.component('appDetailModule', {
         templateUrl:'/app/appointments/app-detail-module/app-detail-module.html',
-        controller: function($scope, $location, appsService) {
+        controller: function($scope, appsService) {
         	  
         	$scope.$on("appointments:showApp", (event,id) =>{
         	
@@ -30,7 +30,7 @@ app.component('appDetailModule', {
     		
     		function updateApp(data) {
     			appsService.updateApp(id, data).then(
-    				function(res) { $location.path("/appointments/day/"+moment(res.data.dateTimeI).format("YYYYMMDD")); }, 
+    				function(res) { /*$location.path("/appointments/day/"+moment(res.data.dateTimeI).format("YYYYMMDD")); */}, 
     				function(err) { console.error("Error: ", err); });
     		}
         }

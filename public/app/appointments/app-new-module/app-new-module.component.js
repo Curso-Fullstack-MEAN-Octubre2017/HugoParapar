@@ -4,7 +4,7 @@ var app= angular.module('appNewModule', []);
 
 app.component('appNewModule', {
         templateUrl:'/app/appointments/app-new-module/app-new-module.html',
-        controller: function($scope, $http, $filter, $location, appsService, customersService) {
+        controller: function($scope, $http, $filter, appsService, customersService) {
         	  
         	$scope.$on("appointment:crearAppNew", (event,datetime) =>{	
  
@@ -42,14 +42,11 @@ app.component('appNewModule', {
 	               		$scope.app.dateTimeI = moment(date)
 	            		$scope.app.dateTimeF = moment(date).add(30,'m');
 	        			appsService.saveApp($scope.app).then(
-	            				function(res) {
-	            					$scope.app = res;
+	            				function(res) { 
 	            					console.log("CITA CREADA!");
-	            					var day = moment($scope.app.dateTimeI).format("YYYYMMDD")
-	            					/**/
-	            					$scope.$emit("appointments:savedAppointment", $scope.app);
-	            					/**/
-	            					$location.path("/appointments/day/"+day);
+	            					$scope.app = res;
+	            					console.log(moment($scope.app.dateTimeI).format("YYYYMMDD"));
+	            					$scope.$emit("appointment:appSaved", moment($scope.app.dateTimeI).format("YYYYMMDD"));
 	            				}, function(err) {
 	            					console.log("Error: ", err);
 	            				});
