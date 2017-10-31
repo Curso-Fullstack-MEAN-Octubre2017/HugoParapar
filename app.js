@@ -10,9 +10,11 @@ var moment = require('moment');
 
 var app = express();
 
-//*********************************************************************************************
 var customerRoutes = require('./routes/api.js');
 
+//Socket.IO
+app.io = require('socket.io')();
+require("./routes/socketio-manager.js")(app.io)
 
 //Connecting to MongoDB
 var mongoose = require('mongoose');

@@ -6,6 +6,19 @@ app.component('appsDayModule', {
         templateUrl:'/app/appointments/apps-day-module/apps-day-module.html',
         bindings: {day: "="},
         controller: function($scope, appsService) {
+
+/******************************************************/
+        	/* prueba de socketio */ 
+
+        	var socket = io.connect(); 
+
+        	socket.on('appointments:evento1', function(data) { 
+        		console.log("Recibido el evento appointments:evento1", data); 
+
+        		// realizar operaciones relacionadas con este evento 
+
+        	});
+/******************************************************/       	
         	
 			var day = this.day;
 			loadApps(day);
