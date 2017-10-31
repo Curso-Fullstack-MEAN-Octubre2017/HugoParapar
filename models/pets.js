@@ -9,7 +9,7 @@ const petsSchema = Schema({
 	species: {type: String, required: true},
 	race: {type: String, required: true},
 	description: {type: String},
-	photoURL: {type: String},
+	photoURL: {type: String, default: '0.png'},
 	customerId: {type: String, required: true}
 });
 

@@ -4,7 +4,7 @@ var app= angular.module('customerDetailModule', []);
 
     app.component('customerDetailModule', {
         templateUrl:'/app/customer-detail-module/customer-detail-module.html',
-        controller: function($scope, $routeParams, $location, customersService) {
+        controller: function($scope, $routeParams, customersService) {
            
             var id = $routeParams.id;
             
@@ -30,7 +30,7 @@ var app= angular.module('customerDetailModule', []);
         					(err) => { Materialize.toast('ERROR', 4000); });
             	}else{ //post
             		customersService.save({}, $scope.c, 
-            				(res) => { return $location.url('/customers/' + res._id); },  
+            				(res) => { Materialize.toast('Cliente creado correctamente', 4000); },  
         					(err) => { Materialize.toast('ERROR', 4000); });
             	}	
               };

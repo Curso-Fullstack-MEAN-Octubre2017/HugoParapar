@@ -4,7 +4,7 @@ var app= angular.module('petDetailModule', []);
 
     app.component('petDetailModule', {
         templateUrl:'/app/pet-detail-module/pet-detail-module.html',
-        controller: function($scope, $http, $routeParams, $location, petsService) {
+        controller: function($scope, $routeParams, $location, petsService) {
            
             var id = $routeParams.id;
             
@@ -33,7 +33,7 @@ var app= angular.module('petDetailModule', []);
             		$scope.pet.customerId = $routeParams.idCustomer; 	
             		
             		petsService.save({}, $scope.pet, 
-            				(res) => { return $location.url('/customers/' + res.customerId); },  
+            				(res) => { Materialize.toast('Mascota creada correctamente', 4000); return $location.url('/customers/' + res.customerId); },  
         					(err) => { Materialize.toast('ERROR', 4000); });
             	}
               };	 	 	 		
@@ -42,7 +42,7 @@ var app= angular.module('petDetailModule', []);
               $scope.delete = function(form) {
             	  	
             	  petsService.delete({id: $scope.pet._id}, 
-          				(res) => { return $location.url('/customers/' + res.customerId); },  
+          				(res) => { Materialize.toast('Mascota borrada correctamente', 4000); return $location.url('/customers/' + res.customerId); },  
       					(err) => { Materialize.toast('ERROR', 4000); });
               };   
         }
