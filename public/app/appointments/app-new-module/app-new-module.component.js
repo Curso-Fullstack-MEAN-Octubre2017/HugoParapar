@@ -8,11 +8,12 @@ app.component('appNewModule', {
         	  
         	$scope.$on("appointment:crearAppNew", (event,datetime) =>{	
  
+        		var date = moment(datetime,"YYYYMMDDHHmm");    
         		$scope.$parent.crear = true;
         		$scope.$parent.edit = false;
- 
-        		var date = moment(datetime,"YYYYMMDDHHmm");         /**/	console.log(date);
         		$scope.app = {};
+        		$scope.q = null;
+        		$scope.petsList= null;
         		$scope.app.horaI = moment(date).format("HH:mm");
         		$scope.app.horaF = moment(date).add(30,'m').format("HH:mm"); 
         		$scope.customerList = customersService.query({});
@@ -25,21 +26,16 @@ app.component('appNewModule', {
         			var customerId = c._id; 
         			$scope.app.customerId = customerId;
         			$scope.q = c.firstName+" "+c.lastName+" | "+c.dni;
-        			var petsList = {};
                 	$http.get('api/customers/'+customerId+'/pets/').then(function(res) {
-                		$scope.petsList = res.data;		
+                		$scope.petsList = res.data;	
                 	});
-        		}
-
-        		$scope.petsOnClick = function(id) {
-        			$scope.app.petId = id; /**/console.log("petId seleccionado: "+id);
         		}
 
         		$scope.crear = function(f) {
         			if($scope.app.customerId == null || $scope.app.petId==null){
         				 Materialize.toast('Seleccione una mascota antes de crear la cita', 2500);
         			}else{
-	               		$scope.app.dateTimeI = moment(date)
+        				$scope.app.dateTimeI = moment(date)
 	            		$scope.app.dateTimeF = moment(date).add(30,'m');
 	        			appsService.saveApp($scope.app).then(
 	            				function(res) { 
@@ -67,7 +63,7 @@ app.component('appNewModule', {
          		}
         		
         		$scope.volver = function() {
-        			history.back();
+        			$scope.$parent.crear = false;
         		}
         		
         	});

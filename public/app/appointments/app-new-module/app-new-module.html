@@ -9,54 +9,32 @@
 				<div class="input-field col s6">
 					Hora Fin<input type="text" id="dateTimeF" ng-model="app.horaF" disabled>
 				</div>
-				<div class="input-field col s12">
-					<fieldset>
-			  		<legend>Seleccionar cliente</legend>
-						<form>
-					      <div class="input-field">
-							<i class="material-icons" ng-show="!app.customerId">search</i><input ng-model="q" ng-change="change()" id="search" type="search" placeholder="Filtra por: Nombre, apellido o DNI" autocomplete="off">
-					        <label class="label-icon" for="search"></label><i class="material-icons" ng-show="!app.customerId">close</i>
-					      </div> 
-					 	</form>
-					 <ul ng-if="hide" ng-show="!app.customerId" class="collection">
-						<li class="collection-item avatar" ng-repeat="c in customerList | filter:q | startFrom:currentPage*pageSize | limitTo:pageSize | orderBy: 'firstName'">
-							<div ng-click="pets(c)">
-							<p>{{c.firstName}} {{c.lastName}} | {{c.dni}}</p>
-							</div>
-						</li>
-					  </ul>	
-					</fieldset>
-				</div>
-				<div class="input-field col s12">
-					<fieldset>
-			  		<legend>Seleccionar mascota</legend>
-						<!-- 
-						<form>
-							
-							<select ng-model="app.pet" >
-							    	<option ng-options="p._id as p.name for p in petsList"></option>
-							</select>
+				<div class="p5">
+					<form>
+				      <div class="input-field">
 						
-							
-						</form>-->
-						
-				
+						<input ng-model="q" ng-change="change()" id="search" type="search" placeholder="Filtra por: Nombre, apellido o DNI" autocomplete="off">
+				        <label class="label-icon" for="search"></label>
+				      </div> 
+					</form>	
+					<div ng-if="hide" ng-show="!app.customerId" >
 						<ul class="collection">
-							<li class="collection-item avatar" ng-repeat="p in petsList | orderBy: 'name'">
-								<div ng-click="petsOnClick(p._id)">
-									<img src="img/{{p.photoURL}}" class="circle"/><p>{{p.name}}</p><spam class="secondary-content"><i class="material-icons">fullscreen</i></spam>
+							<li class="collection-item avatar" ng-repeat="c in customerList | filter:q | startFrom:currentPage*pageSize | limitTo:pageSize | orderBy: 'firstName'">
+								<div ng-click="pets(c)">
+								<p>{{c.firstName}} {{c.lastName}} | {{c.dni}}</p>
 								</div>
 							</li>
-					  	</ul>
-					  	
-					  	
-					  	
-					</fieldset>
-				</div>
-				<div class="input-field col s12 marginTop5">
+						</ul>
+					</div>
+					<div ng-show="petsList!=null">
+						<select class="browser-default" ng-model="app.petId" ng-options="p._id as p.name for p in petsList">
+							<option value="">Selecciona la mascota</option>
+						</select>
+					</div>	
+					<br>
 					<textarea id="note" class="materialize-textarea" ng-model="app.note"></textarea>
-	         		<label for="note" class='active'>Nota:</label>
-				</div> 
+	         		
+				</div>
 			</div> 
 			<div class="input-field col s12 center-align">
 				<button data-ng-click="crear(miForm)" class="btn btn-default left">Crear cita</button>
@@ -65,3 +43,8 @@
 		</fieldset>
 	</form>
 </div>
+
+
+<style>
+.p5{ padding-left: 5%; padding-right: 5%; }
+</style>
