@@ -9,7 +9,7 @@
 				<div class="input-field col s6">
 					Hora Fin<input type="text" id="dateTimeF" ng-model="app.horaF" disabled>
 				</div>
-				<div class="input-field col s6">
+				<div class="input-field col s12">
 					<fieldset>
 			  		<legend>Seleccionar cliente</legend>
 						<form>
@@ -27,9 +27,20 @@
 					  </ul>	
 					</fieldset>
 				</div>
-				<div class="input-field col s6">
+				<div class="input-field col s12">
 					<fieldset>
 			  		<legend>Seleccionar mascota</legend>
+						<!-- 
+						<form>
+							
+							<select ng-model="app.pet" >
+							    	<option ng-options="p._id as p.name for p in petsList"></option>
+							</select>
+						
+							
+						</form>-->
+						
+				
 						<ul class="collection">
 							<li class="collection-item avatar" ng-repeat="p in petsList | orderBy: 'name'">
 								<div ng-click="petsOnClick(p._id)">
@@ -37,6 +48,9 @@
 								</div>
 							</li>
 					  	</ul>
+					  	
+					  	
+					  	
 					</fieldset>
 				</div>
 				<div class="input-field col s12 marginTop5">
