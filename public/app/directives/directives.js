@@ -17,6 +17,22 @@ angular.module('directives', [])
 							'<label class="active" for="{{id}}">{{label}}</label>'+
 						'</div>' 
 	}
+}).directive('textAreaFormGroup', function() { 
+	return { 
+		restrict : 'E', 
+		replace : true, 
+		scope: { 
+			n: '@', 
+			model: '=',
+			disabled: '=',
+			id: '@',
+			label: '@', 
+			}, 
+			template : '<div class="input-field col {{n}}">'+
+							'<textarea id="{{id}}"  class="materialize-textarea" ng-model="model" ng-disabled="{{disabled}}">'+
+							'<label class="active" for="{{id}}">{{label}}</label>'+
+						'</div>' 
+	}
 }).directive('datePicker', function() { 
 	return { 
 		restrict : 'E', 

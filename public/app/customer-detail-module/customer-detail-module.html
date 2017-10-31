@@ -7,17 +7,14 @@
 			<label-input-form-group data-n="s3" data-model="c.dni" data-id="dni" data-label="DNI"/> 
 			<label-input-form-group data-n="s5" data-model="c.phoneNumber" data-id="phoneNumber" data-label="Teléfono"/> 
 			<label-input-form-group data-n="s7" data-model="c.email" data-id="email" data-label="E-mail"/> 
-			<div class="input-field col s12">
-				<textarea id="note" class="materialize-textarea" ng-model="c.note"></textarea>
-	         	<label for="note" class='active'>Notas</label>
-			</div> 
+			<text-area-form-group data-n="s12" data-model="c.note" data-id="note" data-label="Notas"/> 	
 			<button data-ng-click="submit(miForm)" class="waves-effect waves-light btn right">Guardar cambios</button>
 		</fieldset>
 	</form>
-	<div ng-show="put" class="col s12 m12 l12 marginTop2">
+	<div ng-show="put" class="col s12 m12 l6 marginTop2">
 		<fieldset>
 		<legend>Mascotas</legend>
-			<pet></pet>
+			<pet-module></pet-module>
 		</fieldset>
 	</div>
 <!-- <div ng-show="put" class="col s12 m12 l12 marginTop2">

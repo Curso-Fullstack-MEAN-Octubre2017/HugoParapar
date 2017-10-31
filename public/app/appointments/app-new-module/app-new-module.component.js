@@ -8,8 +8,9 @@ app.component('appNewModule', {
         	  
         	$scope.$on("appointment:crearAppNew", (event,datetime) =>{	
  
-        		console.log(datetime);
-        		
+        		$scope.$parent.crear = true;
+        		$scope.$parent.edit = false;
+ 
         		var date = moment(datetime,"YYYYMMDDHHmm");         /**/	console.log(date);
         		$scope.app = {};
         		$scope.app.horaI = moment(date).format("HH:mm");
@@ -31,21 +32,20 @@ app.component('appNewModule', {
         		}
 
         		$scope.petsOnClick = function(id) {
-        			$scope.app.petId = id;
-        			console.log("petId seleccionado: "+id);
+        			$scope.app.petId = id; /**/console.log("petId seleccionado: "+id);
         		}
 
         		$scope.crear = function(f) {
         			if($scope.app.customerId == null || $scope.app.petId==null){
-        				 Materialize.toast('Seleccione una mascota antes de crear la cita', 2500)
+        				 Materialize.toast('Seleccione una mascota antes de crear la cita', 2500);
         			}else{
 	               		$scope.app.dateTimeI = moment(date)
 	            		$scope.app.dateTimeF = moment(date).add(30,'m');
 	        			appsService.saveApp($scope.app).then(
 	            				function(res) { 
-	            					console.log("CITA CREADA!");
+	            					Materialize.toast('Cita creada correctamente', 2500)
 	            					$scope.app = res;
-	            					console.log(moment($scope.app.dateTimeI).format("YYYYMMDD"));
+	            					$scope.$parent.crear = false;
 	            					$scope.$emit("appointment:appSaved", moment($scope.app.dateTimeI).format("YYYYMMDD"));
 	            				}, function(err) {
 	            					console.log("Error: ", err);

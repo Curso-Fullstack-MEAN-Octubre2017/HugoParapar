@@ -7,10 +7,7 @@
 			<label-input-form-group data-n="s12" data-model="pet.chipNumber" data-id="chipNumber" data-label="Número de Chip"/>
 			<label-input-form-group data-n="s6" data-model="pet.species" data-id="species" data-label="Especie" />
 			<label-input-form-group data-n="s6" data-model="pet.race" data-id="race" data-label="Raza"/>
-			<div class="input-field col s12">
-				<textarea id="description" class="materialize-textarea" ng-model="pet.description"></textarea>
-	         	<label for="description" class='active'>Descripcion</label>
-			</div> 
+			<text-area-form-group data-n="s12" data-model="pet.description" data-id="description" data-label="Descripcion"/>
 			<button data-ng-click="submit(miForm)" class="btn btn-default">Guardar</button>
 	        <button data-ng-click="delete(miForm)" class="btn btn-default red lighten-1 right">Eliminar</button>
 		</fieldset>

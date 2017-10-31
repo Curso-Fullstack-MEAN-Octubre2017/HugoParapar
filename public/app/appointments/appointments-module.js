@@ -13,14 +13,10 @@ app.component('appointmentsModule', {
     		console.log("Estoy entrando en el día:"+day);
     		
         	$scope.$on("appointments:showAppClick", (event,id) =>{
-        		$scope.edit = true;
-        		$scope.crear = false;
         		$scope.$broadcast("appointments:showApp", id);
         	});
         	
         	$scope.$on("appointment:crearAppNewClick", (event,datetime) =>{
-        		$scope.crear = true;
-        		$scope.edit = false;
         		$scope.$broadcast("appointment:crearAppNew", datetime);
         	});
         	

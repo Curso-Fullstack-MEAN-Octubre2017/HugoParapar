@@ -10,7 +10,7 @@ app.component('appsDayModule', {
 			var day = this.day;
 			loadApps(day);
 
-			$scope.$on("appointments:loadAppointment", (event, datetime) =>{	
+			$scope.$on("appointments:loadAppointments", (event, datetime) =>{	
 				console.log("on appointments:loadAppointment", datetime);
 				loadApps(datetime); /**/
 			});

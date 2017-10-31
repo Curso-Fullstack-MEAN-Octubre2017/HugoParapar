@@ -1,19 +1,12 @@
 <div>
-<!-- Datos de la cita -->
+<!-- Detalle de la cita -->
 	<form class="col s12 m12 offset-l2 l10 marginTop2" name="miForm">
 		<fieldset>
-	    <legend>Detalle de la cita</legend>
+	    	<legend>Detalle de la cita</legend>
 			<div class="input-field col s6">
-				<div class="input-field col s6">
-			    	Hora Inicio<input type="text" id="dateTimeI" ng-model="horaI" disabled>
-				</div>
-				<div class="input-field col s6">
-					Hora Fin<input type="text" id="dateTimeF" ng-model="horaF" disabled>
-				</div>
-		 		<div class="input-field col s12">
-					<textarea id="note" class="materialize-textarea" ng-model="note"></textarea>
-	         		<label for="note" class='active'>Nota:</label>
-				</div> 
+				<label-input-form-group data-n="s6" data-model="horaI" data-id="dateTimeI" data-label="Hora Inicio" data-disabled="true"/> 
+				<label-input-form-group data-n="s6" data-model="horaF" data-id="dateTimeF" data-label="Hora Fin" data-disabled="true"/> 	
+				<text-area-form-group data-n="s12" data-model="note" data-id="note" data-label="Nota:"/> 	
 			</div> 
 			<div class="input-field col s6 center-align">
 				<img id="photoURL" ng-src="img/{{pet.photoURL}}" class="circle"/>
@@ -26,38 +19,31 @@
 		</fieldset>
 	</form>
 <!-- Datos de la mascota -->
-	<div>
-		<form class="col s12 m12 offset-l2 l10 marginTop2" name="miForm">
-		 	<fieldset>
-			    <legend>Datos de la mascota</legend>
-				<label-input-form-group data-n="s6" data-model="pet.name" data-id="name" data-label="Nombre" data-disabled="true"/> 
-				<date-picker data-n="s6" data-model="pet.birthDate" data-id="birthDate" data-label="Cumpleaños" data-disabled="true"/>
-				<label-input-form-group data-n="s12" data-model="pet.chipNumber" data-id="chipNumber" data-label="Número de Chip" data-disabled="true"/>
-				<label-input-form-group data-n="s6" data-model="pet.species" data-id="species" data-label="Especie" data-disabled="true"/>
-				<label-input-form-group data-n="s6" data-model="pet.race" data-id="race" data-label="Raza" data-disabled="true"/>
-				<div class="input-field col s12">
-					<textarea disabled id="description" class="materialize-textarea" ng-model="pet.description"></textarea>
-				</div>
-			</fieldset>
-		</form>
-	</div>
-	<div>
-		<form class="col s12 m12 offset-l2 l10 marginTop2" name="miForm">
-		 	<fieldset>
-		    <legend>Datos del cliente</legend>
+	<form class="col s12 m12 offset-l2 l10 marginTop2" name="miForm">
+	 	<fieldset>
+		    <legend>Datos de la mascota</legend>
+			<label-input-form-group data-n="s6" data-model="pet.name" data-id="name" data-label="Nombre" data-disabled="true"/> 
+			<date-picker data-n="s6" data-model="pet.birthDate" data-id="birthDate" data-label="Cumpleaños" data-disabled="true"/>
+			<label-input-form-group data-n="s12" data-model="pet.chipNumber" data-id="chipNumber" data-label="Número de Chip" data-disabled="true"/>
+			<label-input-form-group data-n="s6" data-model="pet.species" data-id="species" data-label="Especie" data-disabled="true"/>
+			<label-input-form-group data-n="s6" data-model="pet.race" data-id="race" data-label="Raza" data-disabled="true"/>
+			<text-area-form-group data-n="s12" data-model="pet.description" data-id="description" data-disabled="true"/> 
+		</fieldset>
+	</form>
+<!-- Datos del due�o -->
+	<form class="col s12 m12 offset-l2 l10 marginTop2" name="miForm">
+	 	<fieldset>
+	    	<legend>Datos del cliente</legend>
 			<label-input-form-group data-n="s3" data-model="pet.customerId.firstName" data-id="firstName" data-label="Nombre" data-disabled="true"/> 
 			<label-input-form-group data-n="s6" data-model="pet.customerId.lastName" data-id="lastName" data-label="Apellidos" data-disabled="true"/> 
 			<label-input-form-group data-n="s3" data-model="pet.customerId.dni" data-id="dni" data-label="DNI" data-disabled="true"/> 
 			<label-input-form-group data-n="s5" data-model="pet.customerId.phoneNumber" data-id="phoneNumber" data-label="Teléfono" data-disabled="true"/> 
 			<label-input-form-group data-n="s7" data-model="pet.customerId.email" data-id="email" data-label="E-mail" data-disabled="true"/> 
-			<div class="input-field col s12">
-				<textarea disabled id="note" class="materialize-textarea" ng-model="pet.customerId.note"></textarea>
-			</div> 
-			</fieldset>
-		</form>
-	</div>
+			<text-area-form-group data-n="s12" data-model="pet.customerId.note" data-id="note" data-disabled="true"/> 
+		</fieldset>
+	</form>
 </div>
 
 <style>
-#photoURL{max-height: 200px;}
+#photoURL{max-height: 150px;}
 </style>
