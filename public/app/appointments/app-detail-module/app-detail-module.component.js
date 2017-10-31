@@ -13,6 +13,7 @@ app.component('appDetailModule', {
         		
         		appsService.getAppById(id).then(function(res) {
         			$scope.horaI = moment(res.dateTimeI).format("HH:mm"); /*.utc()*/
+        			$scope.cambiar = moment(res.dateTimeI).format("YYYYMMDD"); 
             		$scope.horaF = moment(res.dateTimeF).format("HH:mm");
             		$scope.note = res.note;
             		$scope.pet = res.petId;
@@ -23,6 +24,7 @@ app.component('appDetailModule', {
         		}         		
         		$scope.cancelar = function() { //-1 (cancelada)
         			updateApp({status: -1});
+        		
         		}    
         		$scope.atender = function() { //FUNCIONALIDAD VETERINARIO NO IMPLEMENTADA
         			alert("Botón desactivado"); //Atender cita. Status 1 (en curso)
@@ -30,7 +32,8 @@ app.component('appDetailModule', {
         		
         		function updateApp(data) {
         			appsService.updateApp(id, data).then(
-        				function(res) { Materialize.toast('Datos guradados correctamente', 2500) }, 
+        				function(res) { $scope.$parent.edit = false; 
+        								$scope.$emit("appointment:appCambios", $scope.cambiar); }, 
         				function(err) { console.error("Error: ", err); });
         		}
         	});

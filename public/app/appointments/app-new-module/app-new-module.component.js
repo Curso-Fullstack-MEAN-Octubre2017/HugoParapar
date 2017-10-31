@@ -46,7 +46,7 @@ app.component('appNewModule', {
 	            					Materialize.toast('Cita creada correctamente', 2500)
 	            					$scope.app = res;
 	            					$scope.$parent.crear = false;
-	            					$scope.$emit("appointment:appSaved", moment($scope.app.dateTimeI).format("YYYYMMDD"));
+	            					$scope.$emit("appointment:appCambios", moment($scope.app.dateTimeI).format("YYYYMMDD"));
 	            				}, function(err) {
 	            					console.log("Error: ", err);
 	            				});

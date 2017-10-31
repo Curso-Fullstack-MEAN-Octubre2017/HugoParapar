@@ -9,7 +9,7 @@ app.component('appsDayModule', {
         	
 			var day = this.day;
 			loadApps(day);
-
+			
 			$scope.$on("appointments:loadAppointments", (event, datetime) =>{	
 				console.log("on appointments:loadAppointment", datetime);
 				loadApps(datetime); /**/
@@ -18,8 +18,6 @@ app.component('appsDayModule', {
 			
 			function loadApps(day){
     
-    			console.log("dia:"+day);
-    	
 	    		$scope.listHourApps = [];
 	
 	            appsService.getAppsForDate(day).then(function(apps){

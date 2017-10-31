@@ -10,8 +10,6 @@ app.component('appointmentsModule', {
     		if($routeParams.day) day = moment($routeParams.day,"YYYYMMDD");
     		$scope.day = day;
     		
-    		console.log("Estoy entrando en el día:"+day);
-    		
         	$scope.$on("appointments:showAppClick", (event,id) =>{
         		$scope.$broadcast("appointments:showApp", id);
         	});
@@ -20,12 +18,9 @@ app.component('appointmentsModule', {
         		$scope.$broadcast("appointment:crearAppNew", datetime);
         	});
         	
-        	$scope.$on("appointment:appSaved", (event, datetime) => {
+        	$scope.$on("appointment:appCambios", (event, datetime) => {
                 $scope.$broadcast("appointments:loadAppointments", datetime);
             });
-            
-            /*$scope.$on("appointment:appDeleted", (event) => {
-                $scope.$broadcast("appointments:loadAppointments");
-            });*/
+           
         }
 });
