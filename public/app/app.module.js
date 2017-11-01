@@ -3,6 +3,8 @@
 angular.module('petStore', [
     'ngResource',
     'ngRoute',
+    'shell',
+    'splashScreen',
     'directives',
     'preloader',
     'customerModule',

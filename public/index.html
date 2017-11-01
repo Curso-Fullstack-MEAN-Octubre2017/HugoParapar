@@ -20,6 +20,8 @@
 	<link rel="stylesheet" href="/stylesheets/style.css">
 	<script src="/app/app.module.js"></script>
 	<script src="/app/app.config.js"></script>
+	<script src="/app/shell/shell.js"></script>
+	<script src="/app/splash-screen/splashScreen.js"></script>
 	<script src="/app/customer-module/customer-module.component.js"></script>
 	<script src="/app/customer-detail-module/customer-detail-module.component.js"></script>
 	<script src="/app/pet-detail-module/pet-detail-module.component.js"></script>
@@ -43,7 +45,7 @@
 	<header>
 	 <nav>
 	    <div class="nav-wrapper">
-			<a href="/" class="brand-logo center"><img src="./img/logo.png"></img></a>
+			<a href="/" class="brand-logo center"><img src="./img/logo.png"></a>
 	      	<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 	     	<ul class="left hide-on-med-and-down">
 	        	<li><a href="/"><i class="material-icons left">home</i>Inicio</a></li>
@@ -64,12 +66,8 @@
 	<div class="row">
 	    <div class="col m0 s0 l1"></div>
 	    <div class="col s12 m12 l10">
-	        <div class="card">
-	            <div class="card-image">
-	                <img src="">
-	            </div>
-	            <ng-view></ng-view><!-- shell -->
-	        </div>
+	    	 <br>
+	         <shell></shell>
 	    </div>
 	    <div class="col m0 s0 l1"></div>
 	</div>

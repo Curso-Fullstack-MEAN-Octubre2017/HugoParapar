@@ -46,8 +46,8 @@ app.component('calendarModule', {
                 return $scope.dates = dates;
           	});
         	
-        	 $scope.abrir = (date) => {
-                 $location.path("/appointments/day/" + moment(date).format('YYYYMMDD'))
+        	 $scope.abrir = (day) => {
+        		 $location.path("/appointments/day/"+moment(month).format('YYYYMM')+moment(day).format('DD'))
         	 };
         	
         }

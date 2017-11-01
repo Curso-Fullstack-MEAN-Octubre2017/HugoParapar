@@ -31,7 +31,7 @@ angular.module('petStore')
         $httpProvider.interceptors.push('loadingInterceptor');
         $routeProvider
             .when("/",{
-                template: ""
+                template: "<splash-screen></splash-screen>"
             })
             .when("/customers",{
                 template: "<customer-module></customer-module>"

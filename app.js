@@ -10,7 +10,7 @@ var moment = require('moment');
 
 var app = express();
 
-var customerRoutes = require('./routes/api.js');
+var apiRoutes = require('./routes/api.js');
 
 //Socket.IO
 app.io = require('socket.io')();
@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //require("./test/appointments_crud_tests.js");
 
 // Nuevas Rutas van aqui:
-app.use('/api/',customerRoutes);
+app.use('/api/',apiRoutes);
 
 
 //Front End
