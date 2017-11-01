@@ -1,6 +1,6 @@
 # MEAN-PetStore-HugoParapar
 
-Aplicaci髇 Demo implementada como parte del curso Fullstack-MEAN
+Aplicaci贸n Demo implementada como parte del curso Fullstack-MEAN
 
 Se trata de una aplicacion para gestionar las citas a una imaginaria clinica veterinaria.
 
@@ -11,7 +11,7 @@ Utilizaremos la pila MEAN para implementar la gestion de Clientes/Mascotas y dar
 
 https://petstore-hugoparapar.herokuapp.com/
 
-# Instalaci髇 local
+# Instalaci贸n local
 
 ```bash
 git clone https://github.com/Curso-Fullstack-MEAN-Octubre2017/HugoParapar.git
@@ -22,17 +22,16 @@ npm start
 En el navegador: localhost:3000
 
 
-#MEAN: Mongodb + Express + AngularJs + Node.js
+# MEAN: Mongodb + Express + AngularJs + Node.js
 
-![mean]
-(https://user-images.githubusercontent.com/13489323/32271528-9bca1280-befa-11e7-8544-8b28550f43a4.JPG)
+![mean](https://user-images.githubusercontent.com/13489323/32271528-9bca1280-befa-11e7-8544-8b28550f43a4.JPG)
 
 ![Arquitectura Mean](https://raw.githubusercontent.com/Curso-Fullstack-MEAN-Octubre2017/MEAN-PetStore/master/public/images/ArquitecturaMean-1.jpg)
 
 
 # El Proyecto
 
-Se trata de una aplicacion para la gesti髇 de Clientes/Mascotas y citas de una clinica veterinaria.
+Se trata de una aplicacion para la gesti贸n de Clientes/Mascotas y citas de una clinica veterinaria.
 
 ## Modelo de datos
 
@@ -62,20 +61,20 @@ Diagrama de flujo que representa como se dan de alta Citas en el calendario y ho
 
 | Metodo  |  URL  |  Body  |  Response |
 |---|---|---|---|
-|  GET  |  api/customers  |  <vac韔> |   [Array{JSON}{...}] |
-|    |  api/customers/:id  |  <vac韔> |  {JSON}|
-|    |  api/customers/:id/pets  |  <vac韔>  |  {JSON}|
-|    |  api/pets/:id  |  <vac韔>  | {JSON} |
-|    |  api/appointments  |  <vac韔> |   [Array{JSON}{...}] |
-|    |  api/appointments/:id  |  <vac韔> |  {JSON} |
-|    |  api/appointments/:fromdate/:todate  |  <vac韔>  |  {JSON} |
+|  GET  |  api/customers  |  <vac铆o> |   [Array{JSON}{...}] |
+|    |  api/customers/:id  |  <vac铆o> |  {JSON}|
+|    |  api/customers/:id/pets  |  <vac铆o>  |  {JSON}|
+|    |  api/pets/:id  |  <vac铆o>  | {JSON} |
+|    |  api/appointments  |  <vac铆o> |   [Array{JSON}{...}] |
+|    |  api/appointments/:id  |  <vac铆o> |  {JSON} |
+|    |  api/appointments/:fromdate/:todate  |  <vac铆o>  |  {JSON} |
 |  POST  |  api/customers  |  {JSON}  |  {JSON} |
 |    |  api/pets  |  {JSON}  |  {JSON} |
 |    |  api/appointments  |  {JSON}  |  {JSON} |
 |  PUT  |  api/customers/:id  |  {JSON}  |  {JSON} |
 |    |  api/pets/:id  |  {JSON}  |  {JSON} |
 |    |  api/appointments/:id  |  {JSON}  |  {JSON} |
-|  DELETE  |  api/pets/:id  |  {JSON}  |  <vac韔>  |
+|  DELETE  |  api/pets/:id  |  {JSON}  |  <vac铆o>  |
 
 
 ```bash
@@ -118,7 +117,7 @@ https://github.com/Curso-Fullstack-MEAN-Octubre2017/HugoParapar/tree/master/publ
 ![detalle_cita](https://user-images.githubusercontent.com/13489323/32274444-22404c38-bf07-11e7-8692-9a0b874c3e8a.JPG)
 
 
-## Implementaci髇 
+## Implementaci贸n 
 
 ### Ejemplo del CRUD de Pets
 
@@ -127,10 +126,10 @@ https://github.com/Curso-Fullstack-MEAN-Octubre2017/HugoParapar/tree/master/publ
 2. Servicios REST:
 https://github.com/Curso-Fullstack-MEAN-Octubre2017/HugoParapar/blob/master/app.js#L36
 
-a. un enlace a la linea donde esta la definici髇 de la url REST
+a. un enlace a la linea donde esta la definici贸n de la url REST
 https://github.com/Curso-Fullstack-MEAN-Octubre2017/HugoParapar/blob/e9c3bd7c882f03188b4e9af043af369c098d7b48/routes/api.js#L3
 
-b. Si usas controllers en el servidor incluye tambi閚 el enlace al m閠odo concreto.
+b. Si usas controllers en el servidor incluye tambi茅n el enlace al m茅todo concreto.
 https://github.com/Curso-Fullstack-MEAN-Octubre2017/HugoParapar/blob/master/controller/pets.js
 
 3. Controlador Angular
@@ -140,7 +139,7 @@ https://github.com/Curso-Fullstack-MEAN-Octubre2017/HugoParapar/blob/master/publ
 b. Componente.html
 https://github.com/Curso-Fullstack-MEAN-Octubre2017/HugoParapar/blob/master/public/app/pet-detail-module/pet-detail-module.html
 
-c. Configuraci髇 del M骴ulo
+c. Configuraci贸n del M贸dulo
 https://github.com/Curso-Fullstack-MEAN-Octubre2017/HugoParapar/blob/master/public/app/app.module.js#L12
 
 d. Ruta Angular
@@ -154,7 +153,7 @@ https://github.com/Curso-Fullstack-MEAN-Octubre2017/HugoParapar/blob/master/publ
 Ejemplo en Appointment:
 https://github.com/Curso-Fullstack-MEAN-Octubre2017/HugoParapar/blob/master/public/app/services/apps-service.js
 
-### Promesas en el servidor y separaci髇 de responsabilidades
+### Promesas en el servidor y separaci贸n de responsabilidades
 
 Ejemplo en Customer:
 https://github.com/Curso-Fullstack-MEAN-Octubre2017/HugoParapar/commit/fd578e5c214478704962895ce8971d227bb00a4e
@@ -178,7 +177,7 @@ https://github.com/Curso-Fullstack-MEAN-Octubre2017/HugoParapar/commit/04749cf09
 Prueba emit message:
 https://github.com/Curso-Fullstack-MEAN-Octubre2017/HugoParapar/commit/9071413e91ffcc2e32beb910594e73de2e6e8d0b
 
-### Simplificar maquetaci髇 con directivas
+### Simplificar maquetaci贸n con directivas
 
 Formulario (input y textarea) + datePicker
 https://github.com/Curso-Fullstack-MEAN-Octubre2017/HugoParapar/blob/master/public/app/directives/directives.js
