@@ -2,9 +2,9 @@
 
 Aplicación Demo implementada como parte del curso Fullstack-MEAN
 
-Se trata de una aplicacion para gestionar las citas a una imaginaria clinica veterinaria.
+Se trata de una aplicacion para gestionar las citas a una imaginaria clínica veterinaria.
 
-Utilizaremos la pila MEAN para implementar la gestion de Clientes/Mascotas y dar de alta Citas en un Calendario.
+Utilizaremos la pila MEAN para implementar la gestión de Clientes/Mascotas y dar de alta Citas en un Calendario.
 
 
 # Demo online
@@ -31,7 +31,7 @@ En el navegador: localhost:3000
 
 # El Proyecto
 
-Se trata de una aplicacion para la gestión de Clientes/Mascotas y citas de una clinica veterinaria.
+Se trata de una aplicación para la gestión de Clientes/Mascotas y citas de una clnica veterinaria.
 
 ## Modelo de datos
 
@@ -95,26 +95,25 @@ Screenshot con enlaces a los ficheros de codigo encargados de implementarlas.
 ### Gestion de clientes y mascotas
 
 #### Lista Cliente
-https://github.com/Curso-Fullstack-MEAN-Octubre2017/HugoParapar/tree/master/public/app/customer-module
-![customers](https://user-images.githubusercontent.com/13489323/32274445-22631d80-bf07-11e7-8167-b1d1bcacbb42.JPG)
+![clientes](https://user-images.githubusercontent.com/13489323/32342135-d5096040-bfff-11e7-8d18-0184bebdf3bd.JPG)
 
 #### Detalle Cliente
 https://github.com/Curso-Fullstack-MEAN-Octubre2017/HugoParapar/tree/master/public/app/customer-detail-module
-![customers_id](https://user-images.githubusercontent.com/13489323/32274446-228aa29c-bf07-11e7-93ba-8663661d1b6b.JPG)
+![customer_pets](https://user-images.githubusercontent.com/13489323/32342138-d56f51d4-bfff-11e7-81ab-db3340b0f0ae.JPG)
 
 #### Detalle Mascota
 https://github.com/Curso-Fullstack-MEAN-Octubre2017/HugoParapar/tree/master/public/app/pet-detail-module
-![pets_id](https://user-images.githubusercontent.com/13489323/32274447-22ac7c78-bf07-11e7-9a64-de19e83878bf.JPG)
+![pet](https://user-images.githubusercontent.com/13489323/32342134-d4e65334-bfff-11e7-89ca-bd47fc01ddfb.JPG)
 
 ### Gestion de citas
 
 #### Calendario Citas
 https://github.com/Curso-Fullstack-MEAN-Octubre2017/HugoParapar/tree/master/public/app/calendar-module
-![calendar](https://user-images.githubusercontent.com/13489323/32274448-22cf3290-bf07-11e7-85ab-9c60ad8b6088.JPG)
+![citas](https://user-images.githubusercontent.com/13489323/32342136-d52b9e94-bfff-11e7-9135-fc303f017e12.JPG)
 
 #### Horarios y Detalles Citas
 https://github.com/Curso-Fullstack-MEAN-Octubre2017/HugoParapar/tree/master/public/app/appointments
-![detalle_cita](https://user-images.githubusercontent.com/13489323/32274444-22404c38-bf07-11e7-8692-9a0b874c3e8a.JPG)
+![detalle_cita](https://user-images.githubusercontent.com/13489323/32342137-d54e0092-bfff-11e7-96c7-b1e25c381f37.JPG)
 
 
 ## Implementación 
