@@ -9,8 +9,8 @@ var app= angular.module('customerDetailModule', []);
             var id = $routeParams.id;
             
             if(id!="new"){ 
-            	//Ocultar añadir mascota si es un nuevo usuario
-            	$scope.put=true;
+            	//Mostrar mascota/s si no es un nuevo usuario
+            	$scope.show=true;
 
             	//Todos los datos del cliente
             	$scope.c = customersService.get({id: id});
@@ -30,7 +30,7 @@ var app= angular.module('customerDetailModule', []);
         					(err) => { Materialize.toast('ERROR', 4000); });
             	}else{ //post
             		customersService.save({}, $scope.c, 
-            				(res) => { Materialize.toast('Cliente creado correctamente', 4000); },  
+            				(res) => { $scope.show=true; Materialize.toast('Cliente creado correctamente', 4000); },  
         					(err) => { Materialize.toast('ERROR', 4000); });
             	}	
               };

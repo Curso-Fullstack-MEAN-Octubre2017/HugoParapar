@@ -1,9 +1,14 @@
-<div class="col s12 m6 l6 ">
+<div class="col s12 m12 l6">
 	<apps-day-module data-day="day"></apps-day-module> 
 </div>
-<div ng-show="edit" class="col s12 m6 l6 ">
+<div ng-show="edit" class="col s12 m12 l6">
 	<app-detail-module></app-detail-module>
 </div>
-<div ng-show="crear" class="col s12 m6 l6 ">
+<div ng-show="crear" class="col s12 m12 l6 c">
 	<app-new-module></app-new-module>
 </div>
+
+<style>
+.c{ position: fixed; right: 0 !important; }
+@media (max-width: 992px) { .c{ position: static; } }
+</style>
